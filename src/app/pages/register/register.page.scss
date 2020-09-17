@@ -1,0 +1,21 @@
+ion-button {
+    --background: linear-gradient(90deg, #4573d6 0%, #244da7 100%);
+    --border-radius: 20px;
+    margin-left: 20px;
+    p {
+        color: #fafafa;
+    }
+}
+
+.inp {
+    margin-top: 100px;
+}
+
+.small-text {
+    margin-left: 90px;
+    color: #111316;
+    b {
+        color: #244da7;
+        font-weight: 400;
+    }
+}

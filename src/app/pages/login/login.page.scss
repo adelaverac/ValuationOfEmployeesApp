@@ -1,0 +1,29 @@
+        ion-button {
+            --background: linear-gradient(90deg, #4573d6 0%, #244da7 100%);
+            --border-radius: 20px;
+            margin-left: 20px;
+            p {
+                color: #fafafa;
+            }
+        }
+        
+        ion-grid img {
+            height: auto !important;
+            width: auto !important;
+            align-items: center;
+            display: flex;
+            margin-left: 60px;
+        }
+        
+        .inp {
+            margin-top: 20px;
+        }
+        
+        .small-text {
+            margin-left: 45px;
+            color: #111316;
+            b {
+                color: #244da7;
+                font-weight: 400;
+            }
+        }

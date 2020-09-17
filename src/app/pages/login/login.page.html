@@ -1,0 +1,43 @@
+<app-header titulo="Ingreso" mode="ios"></app-header>
+
+
+<ion-content class="ion-padding">
+    <div>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="8" size-lg="3" size-md="4" size-sm="6">
+                    <ion-label>
+                        <img src="../../../assets/images/u_burned.png" style="align-items: center" />
+                    </ion-label>
+
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+
+    </div>
+    <form class="ion-padding" class="inp">
+        <div>
+            <ion-item mode="ios">
+                <ion-input placeholder="Correo"></ion-input>
+            </ion-item>
+
+            <ion-item mode="ios">
+
+                <ion-input placeholder="Contraseña" [type]="showPassword ? 'text': 'password' "></ion-input>
+                <ion-icon color="primary" slot="end" [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
+            </ion-item>
+        </div>
+
+
+        <ion-row class="ion-padding">
+            <ion-col>
+                <ion-button mode="ios" type="submit" expand="block">
+                    <p>Iniciar Sesion</p>
+                </ion-button>
+                <a class="ion-padding" class="small-text">Olvido su contraseña?<b (click)="presentAlertPrompt()"> Recuperala aquí</b></a>
+            </ion-col>
+        </ion-row>
+    </form>
+
+</ion-content>
