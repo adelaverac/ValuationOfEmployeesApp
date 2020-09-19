@@ -3,11 +3,11 @@
 
 <ion-content class="ion-padding">
     <div>
-        <ion-grid>
+        <ion-grid fixed>
             <ion-row>
                 <ion-col size="8" size-lg="3" size-md="4" size-sm="6">
                     <ion-label>
-                        <img src="../../../assets/images/u_burned.png" style="align-items: center" />
+                        <img class="lg" src="../../../assets/images/u_burned.png" style="align-items: center" />
                     </ion-label>
 
                 </ion-col>
@@ -16,14 +16,16 @@
 
 
     </div>
-    <form class="ion-padding" class="inp">
+    <form class="inp">
         <div>
             <ion-item mode="ios">
+                <ion-icon class="ion-padding" color="primary" name="mail-outline"></ion-icon>
                 <ion-input placeholder="Correo"></ion-input>
+
             </ion-item>
 
             <ion-item mode="ios">
-
+                <ion-icon class="ion-padding" color="primary" name="key-outline"></ion-icon>
                 <ion-input placeholder="Contraseña" [type]="showPassword ? 'text': 'password' "></ion-input>
                 <ion-icon color="primary" slot="end" [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
             </ion-item>
