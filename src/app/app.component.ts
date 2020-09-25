@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 
 import { Platform } from "@ionic/angular";
-import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { timer } from "rxjs";
+import { StatusbarService } from "./services/statusbar.service";
 
 @Component({
   selector: "app-root",
@@ -10,16 +10,19 @@ import { timer } from "rxjs";
   styleUrls: ["app.component.scss"],
 })
 export class AppComponent {
-  constructor(private platform: Platform, private statusBar: StatusBar) {
+  constructor(
+    private platform: Platform,
+    private statusBarService: StatusbarService
+  ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.statusBar.backgroundColorByHexString("#fff");
+      this.statusBarService.changeBackgroundStatusBar("black");
       const splash: HTMLElement = document.getElementById("splash");
       timer(5000).subscribe(() => {
+        this.statusBarService.changeBackgroundStatusBar("white");
         splash.style.display = "none";
       });
     });

@@ -1,45 +1,164 @@
-<app-header titulo="Ingreso" mode="ios"></app-header>
+<ion-content class="ion-padding" fullscreen="true">
+  <ion-slides class="walkthrough-slides" #slideLogin>
+    <ion-slide class="last-slide illustration-and-decoration-slide">
+      <ion-row class="slide-inner-row">
+        <ion-col class="illustration-col">
+          <app-aspect-ratio [ratio]="{w:924, h:819}">
+            <app-image-shell
+              class="illustration-image"
+              animation="spinner"
+              [src]="'./assets/svg/walkthrough-illustration-4.svg'"
+              [alt]="'walkthrough'"
+            ></app-image-shell>
+          </app-aspect-ratio>
+        </ion-col>
 
-
-<ion-content class="ion-padding">
-    <div>
-        <ion-grid fixed>
-            <ion-row>
-                <ion-col size="8" size-lg="3" size-md="4" size-sm="6">
-                    <ion-label>
-                        <img class="lg" src="../../../assets/images/u_burned.png" style="align-items: center" />
-                    </ion-label>
-
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-
-
-    </div>
-    <form class="inp">
-        <div>
-            <ion-item mode="ios">
-                <ion-icon class="ion-padding" color="primary" name="mail-outline"></ion-icon>
-                <ion-input placeholder="Correo"></ion-input>
-
-            </ion-item>
-
-            <ion-item mode="ios">
-                <ion-icon class="ion-padding" color="primary" name="key-outline"></ion-icon>
-                <ion-input placeholder="Contraseña" [type]="showPassword ? 'text': 'password' "></ion-input>
-                <ion-icon color="primary" slot="end" [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
-            </ion-item>
-        </div>
-
-
-        <ion-row class="ion-padding">
+        <ion-col class="info-col">
+          <ion-row class="info-outer">
             <ion-col>
-                <ion-button mode="ios" type="submit" expand="block">
-                    <p>Iniciar Sesion</p>
-                </ion-button>
-                <a class="ion-padding" class="small-text">Olvido su contraseña?<b (click)="presentAlertPrompt()"> Recuperala aquí</b></a>
-            </ion-col>
-        </ion-row>
-    </form>
+              <div class="info-wrapper">
+                <ion-list>
+                  <ion-item
+                    lines="none"
+                    style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2)"
+                  >
+                    <ion-icon
+                      slot="start"
+                      class="ion-padding"
+                      style="margin-right: 15px; padding: 5px 0px"
+                      name="mail-outline"
+                      position="fixed"
+                    ></ion-icon>
+                    <ion-input
+                      placeholder="Correo electronico"
+                      style="font-size: 15px"
+                      [(ngModel)]="authenticationRequest.email"
+                    ></ion-input>
+                  </ion-item>
 
+                  <ion-item
+                    lines="none"
+                    style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2)"
+                  >
+                    <ion-icon
+                      slot="start"
+                      class="ion-padding"
+                      style="margin-right: 15px; padding: 5px 0px"
+                      name="key-outline"
+                      position="fixed"
+                    ></ion-icon>
+                    <ion-input
+                      placeholder="Contraseña"
+                      [type]="showPassword ? 'text': 'password' "
+                      style="font-size: 15px"
+                      [(ngModel)]="authenticationRequest.password"
+                    ></ion-input>
+                    <ion-icon
+                      color="medium"
+                      slot="end"
+                      style="height: 20px"
+                      [name]="passwordToggleIcon"
+                      (click)="togglePassword()"
+                    ></ion-icon>
+                  </ion-item>
+                </ion-list>
+              </div>
+              <br />
+              <div class="info-wrapper">
+                <ion-item lines="none">
+                  <ion-checkbox
+                    color="tertiary"
+                    checked
+                    slot="start"
+                    mode="ios"
+                    style="margin-right: 5px"
+                  ></ion-checkbox>
+                  <ion-label style="font-size: 14px" color="medium"
+                    >Recordarme</ion-label
+                  >
+                  <a
+                    slot="end"
+                    style="font-weight: bold; color: black; font-size: 14px"
+                    >¿Olvidó su contraseña?</a
+                  >
+                </ion-item>
+              </div>
+              <div class="info-wrapper ion-padding">
+                <ion-row>
+                  <ion-col>
+                    <ion-button
+                      shape="round"
+                      expand="full"
+                      mode="ios"
+                      type="submit"
+                      color="tertiary"
+                      (click)="login()"
+                    >
+                      Iniciar sesión
+                      <ion-icon
+                        name="enter-outline"
+                        color="light"
+                        slot="end"
+                      ></ion-icon>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+                <br />
+                <ion-row>
+                  <ion-note
+                    style="font-size: 14px; margin: 0 auto"
+                    color="medium"
+                    >¿No tienes una cuenta?
+                    <a style="font-weight: bold; color: black">Regístrate</a>
+                  </ion-note>
+                </ion-row>
+              </div>
+              <br />
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
+
+<ion-footer
+  no-border
+  mode="ios"
+  style="position: absolute; bottom: 0; margin: 0px 0px 5px 0px"
+>
+  <ion-row class="info-footer">
+    <ion-col style="text-align: center">
+      <ion-note style="font-size: 13px" color="medium"
+        >Conéctate por redes sociales</ion-note
+      >
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button
+        shape="round"
+        expand="full"
+        fill="outline"
+        color="facebook"
+        mode="ios"
+      >
+        <ion-icon name="logo-facebook" slot="start"></ion-icon>
+        Facebook
+      </ion-button>
+    </ion-col>
+
+    <ion-col>
+      <ion-button
+        shape="round"
+        expand="full"
+        fill="outline"
+        color="google"
+        mode="ios"
+      >
+        <ion-icon name="logo-google" slot="start"></ion-icon>
+        Google
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

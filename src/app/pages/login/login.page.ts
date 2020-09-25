@@ -1,57 +1,67 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { AlertController, IonSlides } from "@ionic/angular";
+import { AuthenticationRequest } from 'src/app/models/authentication/authenticationRequest';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CommomService } from 'src/app/services/commom.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: "app-login",
+  templateUrl: "./login.page.html",
+  styleUrls: [
+    "./styles/login.page.scss",
+    "./styles/login.shell.scss",
+    "./styles/login.responsive.scss",
+  ],
 })
 export class LoginPage implements OnInit {
 
-  showPassword = false;
-passwordToggleIcon = 'eye-outline';
-  constructor(public alertController: AlertController) { }
-  async presentAlertPrompt() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Recupera tu contraseña',
-      message: 'Ingrese su correo',
-      inputs: [
-        {
-          name: 'correo',
-          type: 'email',
-          placeholder: 'Correo'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancelar',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log(' Cancel');
-          }
-        }, {
-          text: 'Ok',
-          handler: () => {
-            console.log(' Ok');
-          }
-        }
-      ]
-    });
+  @ViewChild('slideLogin', { static: true }) slides: IonSlides;
 
-    await alert.present();
-  }
-  togglePassword():void{
-    this.showPassword = !this.showPassword;
-    if(this.passwordToggleIcon == 'eye-outline'){
-      this.passwordToggleIcon = 'eye-off-outline';
-    } else{
-      this.passwordToggleIcon = 'eye-outline'
-    }
+  authenticationRequest: AuthenticationRequest;
+
+  showPassword = false;
+  passwordToggleIcon = "eye-outline";
+  constructor(
+    private _commomService: CommomService,
+    private _authenticationService: AuthenticationService
+  ) {
+    this.authenticationRequest = new AuthenticationRequest();
   }
 
   ngOnInit() {
+    this.slides.lockSwipes(true);
+  }
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
+    if (this.passwordToggleIcon == "eye-outline") {
+      this.passwordToggleIcon = "eye-off-outline";
+    } else {
+      this.passwordToggleIcon = "eye-outline";
+    }
+  }
+
+  async login() {
+    const isValid = this.isValid();
+    if (isValid == '') {
+      this._authenticationService.login(this.authenticationRequest)
+        .subscribe(res => {
+          console.log(res);
+        }, err => {
+          this._commomService.presentToastError(err);
+        });
+    } else {
+      this._commomService.presentToastError(isValid);
+    }
+  }
+
+  isValid(): string {
+    if (this.authenticationRequest.email == '') {
+      return "Ingrese su correo";
+    } else if (this.authenticationRequest.password == '') {
+      return "Ingrese su contraseña";
+    }
+    return "";
   }
 
 }
