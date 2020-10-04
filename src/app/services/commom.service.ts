@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CommomService {
 
-    constructor(private toastCtrl: ToastController) { }
+    isLoading = false;
+
+    constructor(
+        private toastCtrl: ToastController,
+        private loadingCtrl: LoadingController) { }
 
     async presentToastSuccess(message: string) {
         const toast = await this.toastCtrl.create({

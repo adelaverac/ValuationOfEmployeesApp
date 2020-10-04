@@ -46,6 +46,18 @@ export class LoginPage implements OnInit {
     if (isValid == '') {
       this._authenticationService.login(this.authenticationRequest)
         .subscribe(res => {
+          const { token, userViewModel, level, messageResponse } = res;
+          switch (level) {
+            case 'SUCCESS':
+
+              break;
+            case 'WARNING':
+              this._commomService.presentToastWarning(messageResponse);
+              break;
+            case 'DANGER':
+              this._commomService.presentToastError(messageResponse);
+              break;
+          }
           console.log(res);
         }, err => {
           this._commomService.presentToastError(err);
