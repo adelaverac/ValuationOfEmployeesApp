@@ -8,6 +8,12 @@ const routes: Routes = [
     pathMatch: "full",
   },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
+  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
+  {
+    path: '**',
+    redirectTo: 'page-not-found'
+  }
 ];
 
 @NgModule({

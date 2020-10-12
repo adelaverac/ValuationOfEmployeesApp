@@ -10,6 +10,9 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { HttpClientModule } from '@angular/common/http';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+import { TabsPageRoutingModule } from './pages/tabs/tabs.router.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,13 +21,19 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    TabsPageRoutingModule,
     ComponentsModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot({
+      name: '_myDb',
+      driverOrder: ['localstorage']
+    })
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SpinnerDialog,
   ],
   bootstrap: [AppComponent],
 })

@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { AlertController, IonSlides } from "@ionic/angular";
+import { IonSlides, NavController } from "@ionic/angular";
 import { AuthenticationRequest } from 'src/app/models/authentication/authenticationRequest';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommomService } from 'src/app/services/commom.service';
+import { LocalStorageService } from 'src/app/services/localStorage.service';
 
 @Component({
   selector: "app-login",
@@ -23,7 +24,9 @@ export class LoginPage implements OnInit {
   passwordToggleIcon = "eye-outline";
   constructor(
     private _commomService: CommomService,
-    private _authenticationService: AuthenticationService
+    private _authenticationService: AuthenticationService,
+    private _localStorageService: LocalStorageService,
+    private _navCtrl: NavController
   ) {
     this.authenticationRequest = new AuthenticationRequest();
   }
@@ -42,27 +45,24 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
+    this._commomService.showLoading('Iniciando sesión...');
     const isValid = this.isValid();
     if (isValid == '') {
       this._authenticationService.login(this.authenticationRequest)
         .subscribe(res => {
           const { token, userViewModel, level, messageResponse } = res;
-          switch (level) {
-            case 'SUCCESS':
-
-              break;
-            case 'WARNING':
-              this._commomService.presentToastWarning(messageResponse);
-              break;
-            case 'DANGER':
-              this._commomService.presentToastError(messageResponse);
-              break;
+          if (level === 'SUCCESS') {
+            this._localStorageService.setToken(token);
+            this._navCtrl.navigateRoot('/tabs', { animated: true });
+          } else {
+            this._commomService.presentToastError(messageResponse);
           }
-          console.log(res);
         }, err => {
+          this._commomService.hideLoading()
           this._commomService.presentToastError(err);
-        });
+        }, () => this._commomService.hideLoading());
     } else {
+      this._commomService.hideLoading();
       this._commomService.presentToastError(isValid);
     }
   }

@@ -1,0 +1,50 @@
+//General
+.item {
+  text-align: center;
+  margin: 8px;
+
+  label {
+    font-size: 12px;
+  }
+}
+
+.item-img {
+  height: 70px;
+  width: 70px;
+  border-radius: 20px;
+  box-shadow: 0 10px 10px -8px;
+}
+
+.item-name {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+//Estilos skeleton
+.skeleton-img {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+.skeleton-p {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+
+.skeleton-text {
+  margin: 0 auto;
+}
+
+.name {
+  width: 80%;
+}
+
+.address {
+  width: 50%;
+}

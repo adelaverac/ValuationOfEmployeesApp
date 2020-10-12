@@ -1,0 +1,330 @@
+<ion-content>
+  <ion-label class="title">
+    <ion-icon
+      name="close-outline"
+      color="light"
+      style="height: 30px; width: 40px; float: right; margin: 8px 8px 0px 0px"
+      (click)="close()"
+    ></ion-icon>
+  </ion-label>
+  <!-- [src]="employee.company.urlImage" -->
+  <img
+    src="./assets/images/companies/mcdonald.png"
+    style="height: 200px; width: 100%"
+  />
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" class="img-on-logo">
+        <img
+          src="./assets/images/employess/Ana_Rodriguez.jpg"
+          style="border-radius: 100%; margin-left: 15px"
+        />
+      </ion-col>
+
+      <ion-col>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item lines="none" class="average-feedback">
+              <ion-icon slot="start" name="star-outline"></ion-icon>
+              <ion-note slot="end">20</ion-note>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item lines="none" class="average-feedback">
+              <ion-icon
+                slot="start"
+                name="chatbubble-ellipses-outline"
+              ></ion-icon>
+              <ion-note slot="end">6</ion-note>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="reviews-wrapper">
+    <h3 class="detail-title">Información general</h3>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <span
+            style="
+              color: rgba(0, 0, 0, 0.6);
+              font-size: 13px;
+              font-style: italic;
+            "
+            >Empresa</span
+          >
+          <span style="float: right; font-size: 14px; font-weight: 300"
+            >Mc Donald's</span
+          >
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span
+            style="
+              color: rgba(0, 0, 0, 0.6);
+              font-size: 13px;
+              font-style: italic;
+            "
+            >Nombre</span
+          >
+          <span style="float: right; font-size: 14px; font-weight: 300"
+            >Ana Rodriguez</span
+          >
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span
+            style="
+              color: rgba(0, 0, 0, 0.6);
+              font-size: 13px;
+              font-style: italic;
+            "
+            >Telefono</span
+          >
+          <span style="float: right; font-size: 14px; font-weight: 300"
+            >0987880989</span
+          >
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span
+            style="
+              color: rgba(0, 0, 0, 0.6);
+              font-size: 13px;
+              font-style: italic;
+            "
+            >Correo</span
+          >
+          <span style="float: right; font-size: 14px; font-weight: 300"
+            >ana.rodriguez@hotmail.com</span
+          >
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span
+            style="
+              color: rgba(0, 0, 0, 0.6);
+              font-size: 13px;
+              font-style: italic;
+            "
+            >Ocupacion</span
+          >
+          <span style="float: right; font-size: 14px; font-weight: 300"
+            >Atencion al cliente</span
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <hr class="details-divider" />
+
+  <div class="reviews-wrapper">
+    <!-- <hr class="details-divider" /> -->
+    <h3 class="detail-title">Comentarios</h3>
+    <div class="reviews-list">
+      <div class="review-item">
+        <ion-row class="review-user">
+          <ion-col size="2" class="user-image-wrapper">
+            <app-aspect-ratio [ratio]="{ w: 1, h: 1 }">
+              <app-image-shell
+                class="review-user-image"
+                src="./assets/images/employess/James_Costa.jpg"
+              ></app-image-shell>
+            </app-aspect-ratio>
+          </ion-col>
+          <ion-col class="user-brief-wrapper">
+            <h5 class="review-user-name">James Costa</h5>
+            <ion-row class="details-scores user-scores">
+              <ion-col class="score-item user-score">
+                <ion-icon
+                  class="score-icon"
+                  src="./assets/svg/reviews.svg"
+                ></ion-icon>
+                <div class="score-value">15</div>
+                <span class="score-title">Reviews</span>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col class="review-info-wrapper">
+            <span class="review-date"> 20/10/2020 </span>
+            <div class="review-rating" [attr.ratingBase]="4">4.5</div>
+          </ion-col>
+        </ion-row>
+        <p class="review-message">Atencion de primer nivel y muy amable</p>
+      </div>
+      <!-- <hr class="details-divider" /> -->
+
+      <!-- borrar  -->
+      <div class="review-item">
+        <ion-row class="review-user">
+          <ion-col size="2" class="user-image-wrapper">
+            <app-aspect-ratio [ratio]="{ w: 1, h: 1 }">
+              <app-image-shell
+                class="review-user-image"
+                src="./assets/images/employess/Ana_Rodriguez.jpg"
+              ></app-image-shell>
+            </app-aspect-ratio>
+          </ion-col>
+          <ion-col class="user-brief-wrapper">
+            <h5 class="review-user-name">Ana_Rodriguez</h5>
+            <ion-row class="details-scores user-scores">
+              <ion-col class="score-item user-score">
+                <ion-icon
+                  class="score-icon"
+                  src="./assets/svg/reviews.svg"
+                ></ion-icon>
+                <div class="score-value">6</div>
+                <span class="score-title">Reviews</span>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col class="review-info-wrapper">
+            <span class="review-date"> 19/10/2020 </span>
+            <div class="review-rating" [attr.ratingBase]="1">1.4</div>
+          </ion-col>
+        </ion-row>
+        <p class="review-message">Mal educado</p>
+      </div>
+      <!-- <hr class="details-divider" /> -->
+
+      <div class="review-item">
+        <ion-row class="review-user">
+          <ion-col size="2" class="user-image-wrapper">
+            <app-aspect-ratio [ratio]="{ w: 1, h: 1 }">
+              <app-image-shell
+                class="review-user-image"
+                src="./assets/images/employess/Priscila_Parraga.jpg"
+              ></app-image-shell>
+            </app-aspect-ratio>
+          </ion-col>
+          <ion-col class="user-brief-wrapper">
+            <h5 class="review-user-name">Priscila Parraga</h5>
+            <ion-row class="details-scores user-scores">
+              <ion-col class="score-item user-score">
+                <ion-icon
+                  class="score-icon"
+                  src="./assets/svg/reviews.svg"
+                ></ion-icon>
+                <div class="score-value">9</div>
+                <span class="score-title">Reviews</span>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col class="review-info-wrapper">
+            <span class="review-date"> 20/09/2020 </span>
+            <div class="review-rating" [attr.ratingBase]="3">3.8</div>
+          </ion-col>
+        </ion-row>
+        <p class="review-message">Regular</p>
+      </div>
+      <!-- <hr class="details-divider" /> -->
+
+      <div class="review-item">
+        <ion-row class="review-user">
+          <ion-col size="2" class="user-image-wrapper">
+            <app-aspect-ratio [ratio]="{ w: 1, h: 1 }">
+              <app-image-shell
+                class="review-user-image"
+                src="./assets/images/employess/Miguel_Asencio.jpg"
+              ></app-image-shell>
+            </app-aspect-ratio>
+          </ion-col>
+          <ion-col class="user-brief-wrapper">
+            <h5 class="review-user-name">Miguel Asencio</h5>
+            <ion-row class="details-scores user-scores">
+              <ion-col class="score-item user-score">
+                <ion-icon
+                  class="score-icon"
+                  src="./assets/svg/reviews.svg"
+                ></ion-icon>
+                <div class="score-value">3</div>
+                <span class="score-title">Reviews</span>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col class="review-info-wrapper">
+            <span class="review-date"> 18/07/2020 </span>
+            <div class="review-rating" [attr.ratingBase]="2">2.4</div>
+          </ion-col>
+        </ion-row>
+        <p class="review-message">Un poco desorientado</p>
+      </div>
+      <!-- <hr class="details-divider" /> -->
+
+      <div class="review-item">
+        <ion-row class="review-user">
+          <ion-col size="2" class="user-image-wrapper">
+            <app-aspect-ratio [ratio]="{ w: 1, h: 1 }">
+              <app-image-shell
+                class="review-user-image"
+                src="./assets/images/employess/Romina_Reyes.jpg"
+              ></app-image-shell>
+            </app-aspect-ratio>
+          </ion-col>
+          <ion-col class="user-brief-wrapper">
+            <h5 class="review-user-name">Romina Reyes</h5>
+            <ion-row class="details-scores user-scores">
+              <ion-col class="score-item user-score">
+                <ion-icon
+                  class="score-icon"
+                  src="./assets/svg/reviews.svg"
+                ></ion-icon>
+                <div class="score-value">30</div>
+                <span class="score-title">Reviews</span>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col class="review-info-wrapper">
+            <span class="review-date"> 08/07/2020 </span>
+            <div class="review-rating" [attr.ratingBase]="5">5</div>
+          </ion-col>
+        </ion-row>
+        <p class="review-message">Excelente persona y muy amable</p>
+      </div>
+      <!-- <hr class="details-divider" /> -->
+
+      <!-- fin borrar -->
+    </div>
+  </div>
+
+  <hr class="details-divider" />
+  <div class="info-actions">
+    <ion-button color="light" expand="block" fill="solid">
+      MOSTRAR MÁS RESEÑAS (5)</ion-button
+    >
+    <br />
+    <ion-button color="dark" expand="block" fill="solid"
+      >Escribir un comentario</ion-button
+    >
+  </div>
+  <br />
+</ion-content>
+
+<ion-footer>
+  <ion-item-group class="filters-group">
+    <!-- <ion-item>
+          <ion-textarea
+            rows="3"
+            placeholder="Ingresa tu comentario..."
+          ></ion-textarea>
+        </ion-item> -->
+
+    <form [formGroup]="ratingForm">
+      <ion-list class="ratings-list" lines="full">
+        <ion-item class="rating-item">
+          <ion-label class="rating-label">Calificación</ion-label>
+          <app-rating-input formControlName="rate" max="5"></app-rating-input>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-item-group>
+</ion-footer>

@@ -1,5 +1,52 @@
 <app-splash></app-splash>
 
 <ion-app>
-    <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header class="ion-no-border">
+      <div class="header-menu">
+        <ion-avatar slot="start">
+          <img src="./assets/svg/user.svg" />
+        </ion-avatar>
+        <ion-toolbar>
+          <h6>Andy Steven</h6>
+          <p class="cellphone">
+            <ion-icon
+              slot="start"
+              name="call-outline"
+              class="icon-texto-header-menu"
+            ></ion-icon>
+            0961063529
+          </p>
+          <hr />
+          <p class="email">
+            <ion-icon
+              slot="start"
+              name="mail-outline"
+              class="icon-texto-header-menu"
+            ></ion-icon>
+            adelaverac@hotmail.com
+          </p>
+        </ion-toolbar>
+      </div>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle *ngFor="let option of navigations | async">
+          <ion-item lines="none" detail>
+            <ion-icon [name]="option.icon" slot="start"></ion-icon>
+            <ion-label> {{ option.name }} </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+
+    <ion-footer class="ion-no-border">
+      <ion-toolbar>
+        <ion-badge color="dark" mode="ios">v1.0.0</ion-badge>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

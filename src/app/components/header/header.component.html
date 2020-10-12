@@ -1,15 +1,11 @@
-<ion-header class="ion-no-border">
-    <ion-toolbar>
+<ion-header class="ion-no-border" translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first" color="tertiary"></ion-menu-button>
+    </ion-buttons>
 
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="/" text="" mode="ios">
-            </ion-back-button>
-        </ion-buttons>
-
-
-        <ion-title class="ion-text-capitalize" color="primary">
-            {{ titulo }}
-        </ion-title>
-
-    </ion-toolbar>
+    <ion-avatar *ngIf="showAvatar" slot="end">
+      <img src="/assets/svg/user.svg" />
+    </ion-avatar>
+  </ion-toolbar>
 </ion-header>

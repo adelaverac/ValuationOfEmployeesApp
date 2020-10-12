@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Mc Donalds",
+    "address": "Alborada",
+    "urlImage": "/assets/images/companies/mcdonald.png"
+  },
+  {
+    "name": "Sport planet",
+    "address": "City mall",
+    "urlImage": "/assets/images/companies/kfc.png"
+  },
+  {
+    "name": "Cinemark",
+    "address": "Mall del sol",
+    "urlImage": "/assets/images/companies/cinemark.png"
+  },
+  {
+    "name": "KFC",
+    "address": "Portete",
+    "urlImage": "/assets/images/companies/mcdonald.png"
+  },
+  {
+    "name": "Puerto Moro",
+    "address": "Mall del sol",
+    "urlImage": "/assets/images/companies/cinemark.png"
+  },
+  {
+    "name": "Wingers",
+    "address": "Mall del sol",
+    "urlImage": "/assets/images/companies/mcdonald.png"
+  },
+  {
+    "name": "Punta Hills",
+    "address": "Montañita",
+    "urlImage": "/assets/images/companies/mcdonald.png"
+  },
+  {
+    "name": "Supercine",
+    "address": "City mall",
+    "urlImage": "/assets/images/companies/kfc.png"
+  },
+  {
+    "name": "Eddy´s",
+    "address": "Aventura plaza",
+    "urlImage": "/assets/images/companies/cinemark.png"
+  },
+  {
+    "name": "Banco del Pichincha",
+    "address": "Fco. de Orellana",
+    "urlImage": "/assets/images/companies/mcdonald.png"
+  },
+  {
+    "name": "Pizza hut",
+    "address": "Alborada",
+    "urlImage": "/assets/images/companies/cinemark.png"
+  },
+  {
+    "name": "Domino´s Pizza",
+    "address": "Centenario",
+    "urlImage": "/assets/images/companies/mcdonald.png"
+  },
+  {
+    "name": "Fruta bar",
+    "address": "Malecon",
+    "urlImage": "/assets/images/companies/mcdonald.png"
+  },
+  {
+    "name": "Pasteleria Californina",
+    "address": "Via a daule",
+    "urlImage": "/assets/images/companies/kfc.png"
+  },
+  {
+    "name": "Parrillada del Ñato",
+    "address": "Urdesa",
+    "urlImage": "/assets/images/companies/cinemark.png"
+  },
+  {
+    "name": "Sweet and Coffe",
+    "address": "San marino",
+    "urlImage": "/assets/images/companies/mcdonald.png"
+  },
+  {
+    "name": "Sheraton",
+    "address": "Plaza del Sol Avenida",
+    "urlImage": "/assets/images/companies/cinemark.png"
+  },
+  {
+    "name": "Casa Res",
+    "address": "San marino",
+    "urlImage": "/assets/images/companies/mcdonald.png"
+  }
+]

@@ -1,0 +1,42 @@
+// Header Menu
+.header-menu {
+  padding: 40px 0px 40px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  hr {
+    width: 30px;
+    background: black;
+  }
+
+  .cellphone {
+    margin: 0;
+    text-align: -webkit-center;
+  }
+
+  .email {
+    text-align: -webkit-center;
+  }
+}
+
+.header-menu ion-avatar {
+  margin: auto;
+  height: 100px;
+  width: 100px;
+}
+
+.header-menu ion-toolbar h6 {
+  text-align: -webkit-center;
+  margin-bottom: 0;
+}
+
+.icon-texto-header-menu {
+  vertical-align: middle;
+}
+
+ion-content {
+  top: 6%;
+}
+
+ion-footer {
+  padding: 20px 20px 0px 20px;
+}

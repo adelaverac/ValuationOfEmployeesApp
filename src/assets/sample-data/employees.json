@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Ana",
+    "lastName": "Rodriguez",
+    "fullName": "Ana Rodriguez",
+    "jobOccupation": "Secretaria",
+    "urlImage": "/assets/images/employess/Ana_Rodriguez.jpg",
+    "company": [
+      {
+        "name": "Mc Donalds",
+        "address": "Alborada",
+        "urlImage": "/assets/images/companies/mcdonald.png"
+      }
+    ]
+  },
+  {
+    "name": "Gladys",
+    "lastName": "Garcia",
+    "jobOccupation": "Atencion al cliente",
+    "fullName": "Gladys Garcia",
+    "urlImage": "/assets/images/employess/Rebeca_Reyes.jpg",
+    "company": [
+      {
+        "name": "Cinemark",
+        "address": "Mall del sol",
+        "urlImage": "/assets/images/companies/cinemark.png"
+      }
+    ]
+  },
+  {
+    "name": "James",
+    "lastName": "Costa",
+    "jobOccupation": "Recursos humanos",
+    "fullName": "James Costa",
+    "urlImage": "/assets/images/employess/James_Costa.jpg",
+    "company": [
+      {
+        "name": "Supercine",
+        "address": "City mall",
+        "urlImage": "/assets/images/companies/kfc.png"
+      }
+    ]
+  },
+  {
+    "name": "Juan",
+    "lastName": "Valverde",
+    "jobOccupation": "Desarrollador Semi Senior",
+    "fullName": "Juan Valverde",
+    "urlImage": "/assets/images/employess/Juan_Mendez.jpg"
+  },
+  {
+    "name": "Rominca",
+    "lastName": "Avila",
+    "jobOccupation": "Supervisora",
+    "fullName": "Romina Avila",
+    "urlImage": "/assets/images/employess/Priscila_Parraga.jpg"
+  },
+  {
+    "name": "Rebeca",
+    "lastName": "Reyes",
+    "jobOccupation": "Asistente",
+    "fullName": "Rebeca Reyes",
+    "urlImage": "/assets/images/employess/Rebeca_Reyes.jpg"
+  },
+  {
+    "name": "Juan",
+    "lastName": "Villacreses",
+    "jobOccupation": "Servicio tecnico",
+    "fullName": "Juan Villacreses",
+    "urlImage": "/assets/images/employess/Romina_Reyes.jpg"
+  },
+  {
+    "name": "Camila",
+    "lastName": "Castro",
+    "jobOccupation": "Pasteleria",
+    "fullName": "Camila Castro",
+    "urlImage": "/assets/images/employess/Ana_Rodriguez.jpg"
+  },
+  {
+    "name": "Priscila",
+    "lastName": "Parraga",
+    "jobOccupation": "Profesora",
+    "fullName": "Priscila Parraga",
+    "urlImage": "/assets/images/employess/Priscila_Parraga.jpg"
+  },
+  {
+    "name": "Juan",
+    "lastName": "Mendez",
+    "jobOccupation": "Desarrollador Senior",
+    "fullName": "Juan Mendez",
+    "urlImage": "/assets/images/employess/Juan_Mendez.jpg"
+  }
+]

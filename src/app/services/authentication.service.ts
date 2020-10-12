@@ -15,7 +15,10 @@ export class AuthenticationService {
     // Http Headers
     httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
+            "Access-Control-Allow-Headers": "origin, x-requested-with",
         })
     }
 
@@ -27,7 +30,8 @@ export class AuthenticationService {
     }
 
     login(authenticationRequest: AuthenticationRequest): Observable<AuthenticationResponse> {
-
+        console.log(this._endpointService.pathLogin);
+        console.log(this.httpOptions);
         return this._http.post<AuthenticationResponse>(`${this._endpointService.pathLogin}`, JSON.stringify(authenticationRequest), this.httpOptions)
             .pipe(
                 retry(1),

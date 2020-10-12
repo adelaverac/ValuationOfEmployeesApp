@@ -1,0 +1,40 @@
+<header [showAvatar]="true"></header>
+<!-- fullscreen -->
+<ion-content>
+  <div class="info-legend">
+    <h6>Encuentra a un</h6>
+    <h5><strong>Profesional y evalualo </strong></h5>
+  </div>
+
+  <ion-toolbar>
+    <ion-segment
+      value="company"
+      color="tertiary"
+      mode="md"
+      (ionChange)="segmentChanged($event)"
+    >
+      <ion-segment-button value="company" layout="icon-start">
+        <ion-icon name="business-outline"></ion-icon>
+        <ion-label>Empresas</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="customer" layout="icon-start">
+        <ion-icon name="people-outline"></ion-icon>
+        <ion-label>Empleados</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <companies *ngIf="showCompany" [companies]="companies"></companies>
+  <employees *ngIf="!showCompany" [employees]="employees"></employees>
+
+  <!-- <ion-infinite-scroll
+    threshold="150px"
+    (ionInfinite)="loadInfiniteScroll($event)"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="crescent"
+      loadingText="Cargando datos..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+</ion-content>
