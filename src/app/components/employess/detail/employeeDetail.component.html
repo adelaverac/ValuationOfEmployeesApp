@@ -27,7 +27,9 @@
           <ion-col size="6">
             <ion-item lines="none" class="average-feedback">
               <ion-icon slot="start" name="star-outline"></ion-icon>
-              <ion-note slot="end">20</ion-note>
+              <ion-label style="font-size: 14px; margin-left: 10px"
+                >20</ion-label
+              >
             </ion-item>
           </ion-col>
           <ion-col size="6">
@@ -36,7 +38,9 @@
                 slot="start"
                 name="chatbubble-ellipses-outline"
               ></ion-icon>
-              <ion-note slot="end">6</ion-note>
+              <ion-label style="font-size: 14px; margin-left: 10px"
+                >6</ion-label
+              >
             </ion-item>
           </ion-col>
         </ion-row>
@@ -298,33 +302,24 @@
 
   <hr class="details-divider" />
   <div class="info-actions">
-    <ion-button color="light" expand="block" fill="solid">
+    <ion-button mode="ios" color="light" expand="block" fill="solid">
       MOSTRAR MÁS RESEÑAS (5)</ion-button
     >
     <br />
-    <ion-button color="dark" expand="block" fill="solid"
+    <ion-button mode="ios" color="dark" expand="block" fill="solid"
       >Escribir un comentario</ion-button
     >
   </div>
   <br />
 </ion-content>
 
-<ion-footer>
-  <ion-item-group class="filters-group">
-    <!-- <ion-item>
-          <ion-textarea
-            rows="3"
-            placeholder="Ingresa tu comentario..."
-          ></ion-textarea>
-        </ion-item> -->
-
-    <form [formGroup]="ratingForm">
-      <ion-list class="ratings-list" lines="full">
-        <ion-item class="rating-item">
-          <ion-label class="rating-label">Calificación</ion-label>
-          <app-rating-input formControlName="rate" max="5"></app-rating-input>
-        </ion-item>
-      </ion-list>
-    </form>
-  </ion-item-group>
+<ion-footer mode="ios">
+  <form [formGroup]="ratingForm">
+    <ion-list class="ratings-list" lines="full">
+      <ion-item class="rating-item">
+        <ion-label class="rating-label">Calificación</ion-label>
+        <app-rating-input formControlName="rate" max="5"></app-rating-input>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-footer>

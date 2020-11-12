@@ -32,30 +32,25 @@
   padding: 0px;
 }
 
-// .walkthrough-slides .info-col .info-wrapper .other-login {
-//   margin: 10px 0px 10px 0px;
-
-//   ion-item {
-//     width: 100%;
-//     margin: 0px;
-//     padding: 0px;
-
-//     p {
-//       display: inline-block;
-//       font-weight: bold;
-//     }
-
-//     hr {
-//       background-color: rgba(0, 0, 0, 0.2);
-//       width: 70%;
-//     }
-//   }
-// }
-
 .walkthrough-slides .info-col .info-wrapper {
   .ion-padding {
     padding-left: 0px;
   }
+}
+
+.button-circle-custom-right {
+  float: right;
+  margin: 30px;
+  height: 75px;
+  width: 75px;
+}
+
+.row-button {
+  margin-top: 50px;
+}
+
+.grid-authentication {
+  margin-top: 50px;
 }
 
 // Template
@@ -111,7 +106,7 @@ ion-content {
     // .swiper-pagination space
     border-bottom: var(--page-swiper-pagination-space) solid transparent;
     background-clip: padding-box;
-    // background-color: var(--page-vector-decoration-fill);
+    background-color: var(--page-vector-decoration-fill);
   }
 }
 
@@ -153,6 +148,10 @@ ion-content {
       shape-rendering: geometricprecision;
       height: calc(100% + 1px);
     }
+  }
+
+  .info-welcome {
+    padding: 0px 20px;
   }
 
   .info-col {
@@ -210,7 +209,7 @@ ion-content {
   }
 
   .info-col {
-    padding: var(--page-margin);
+    // padding: var(--page-margin);
 
     .info-outer {
       height: 100%;
@@ -249,42 +248,42 @@ ion-content {
   }
 }
 
-:host(.first-slide-active) {
-  .skip-walkthrough-button {
-    visibility: hidden;
-  }
-}
+// :host(.first-slide-active) {
+//   .skip-walkthrough-button {
+//     visibility: hidden;
+//   }
+// }
 
-:host(.last-slide-active) {
-  ::ng-deep .walkthrough-slides {
-    .swiper-pagination {
-      display: none;
-    }
-  }
+// :host(.last-slide-active) {
+//   ::ng-deep .walkthrough-slides {
+//     .swiper-pagination {
+//       display: none;
+//     }
+//   }
 
-  .skip-walkthrough-button {
-    visibility: hidden;
-  }
-}
+//   // .skip-walkthrough-button {
+//   //   visibility: hidden;
+//   // }
+// }
 
-// ISSUE: .swiper-paggination gets rendered dynamically. That prevents styling the elements when using the default Angular ViewEncapsulation.None
-//        (Angular doesn't add an '_ngcontent' attribute to the .swiper-paggination because it's dynamically rendered)
-// FIX:   See: https://stackoverflow.com/a/36265072/1116959
-:host ::ng-deep .walkthrough-slides {
-  .swiper-pagination {
-    height: var(--page-swiper-pagination-height);
-    line-height: 1;
-    // .swiper-pagination is 18px height, .slide-inner-row has 40px of padding-bottom => bottom = (40px - 18px)/2 = 11px
-    bottom: calc(
-      (
-          var(--page-swiper-pagination-space) -
-            var(--page-swiper-pagination-height)
-        ) / 2
-    );
+// // ISSUE: .swiper-paggination gets rendered dynamically. That prevents styling the elements when using the default Angular ViewEncapsulation.None
+// //        (Angular doesn't add an '_ngcontent' attribute to the .swiper-paggination because it's dynamically rendered)
+// // FIX:   See: https://stackoverflow.com/a/36265072/1116959
+// :host ::ng-deep .walkthrough-slides {
+//   .swiper-pagination {
+//     height: var(--page-swiper-pagination-height);
+//     line-height: 1;
+//     // .swiper-pagination is 18px height, .slide-inner-row has 40px of padding-bottom => bottom = (40px - 18px)/2 = 11px
+//     bottom: calc(
+//       (
+//           var(--page-swiper-pagination-space) -
+//             var(--page-swiper-pagination-height)
+//         ) / 2
+//     );
 
-    .swiper-pagination-bullet {
-      width: var(--page-pagination-bullet-size);
-      height: var(--page-pagination-bullet-size);
-    }
-  }
-}
+//     .swiper-pagination-bullet {
+//       width: var(--page-pagination-bullet-size);
+//       height: var(--page-pagination-bullet-size);
+//     }
+//   }
+// }

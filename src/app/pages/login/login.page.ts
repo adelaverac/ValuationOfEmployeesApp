@@ -1,17 +1,17 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { IonSlides, NavController } from "@ionic/angular";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonSlides, MenuController, NavController } from '@ionic/angular';
 import { AuthenticationRequest } from 'src/app/models/authentication/authenticationRequest';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommomService } from 'src/app/services/commom.service';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.page.html",
+  selector: 'app-login',
+  templateUrl: './login.page.html',
   styleUrls: [
-    "./styles/login.page.scss",
-    "./styles/login.shell.scss",
-    "./styles/login.responsive.scss",
+    './styles/login.page.scss',
+    './styles/login.shell.scss',
+    './styles/login.responsive.scss',
   ],
 })
 export class LoginPage implements OnInit {
@@ -20,13 +20,15 @@ export class LoginPage implements OnInit {
 
   authenticationRequest: AuthenticationRequest;
 
+  isLoginWithEmail = false;
   showPassword = false;
-  passwordToggleIcon = "eye-outline";
+  passwordToggleIcon = 'eye-outline';
   constructor(
-    private _commomService: CommomService,
-    private _authenticationService: AuthenticationService,
-    private _localStorageService: LocalStorageService,
-    private _navCtrl: NavController
+    private commomService: CommomService,
+    private authenticationService: AuthenticationService,
+    private localStorageService: LocalStorageService,
+    private navCtrl: NavController,
+    private menuCtrl: MenuController
   ) {
     this.authenticationRequest = new AuthenticationRequest();
   }
@@ -35,45 +37,77 @@ export class LoginPage implements OnInit {
     this.slides.lockSwipes(true);
   }
 
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
+
   togglePassword(): void {
     this.showPassword = !this.showPassword;
-    if (this.passwordToggleIcon == "eye-outline") {
-      this.passwordToggleIcon = "eye-off-outline";
+    if (this.passwordToggleIcon === 'eye-outline') {
+      this.passwordToggleIcon = 'eye-off-outline';
     } else {
-      this.passwordToggleIcon = "eye-outline";
+      this.passwordToggleIcon = 'eye-outline';
     }
   }
 
   async login() {
-    this._commomService.showLoading('Iniciando sesión...');
+    this.commomService.showLoading('Iniciando sesión...');
     const isValid = this.isValid();
-    if (isValid == '') {
-      this._authenticationService.login(this.authenticationRequest)
-        .subscribe(res => {
-          const { token, userViewModel, level, messageResponse } = res;
-          if (level === 'SUCCESS') {
-            this._localStorageService.setToken(token);
-            this._navCtrl.navigateRoot('/tabs', { animated: true });
-          } else {
-            this._commomService.presentToastError(messageResponse);
-          }
-        }, err => {
-          this._commomService.hideLoading()
-          this._commomService.presentToastError(err);
-        }, () => this._commomService.hideLoading());
-    } else {
-      this._commomService.hideLoading();
-      this._commomService.presentToastError(isValid);
+
+    if (!(isValid === '')) {
+      this.commomService.hideLoading();
+      this.commomService.presentToastError(isValid);
+      return;
     }
+
+    this.authenticationService.login(this.authenticationRequest)
+      .subscribe(result => {
+        const { token, userViewModel, level, messageResponse } = result;
+        if (!(level === 'SUCCESS')) {
+          this.commomService.presentToastError(messageResponse);
+          return;
+        }
+
+        this.localStorageService.setToken(token);
+        this.menuCtrl.enable(true);
+        this.navCtrl.navigateRoot('/main/tabs/tab1', { animated: true });
+      }, err => {
+        this.commomService.hideLoading();
+        this.commomService.presentToastError(err);
+      }, () => this.commomService.hideLoading());
   }
 
   isValid(): string {
-    if (this.authenticationRequest.email == '') {
-      return "Ingrese su correo";
-    } else if (this.authenticationRequest.password == '') {
-      return "Ingrese su contraseña";
+    if (this.authenticationRequest.email === '') {
+      return 'Ingrese su correo';
     }
-    return "";
+
+    if (this.authenticationRequest.password === '') {
+      return 'Ingrese su contraseña';
+    }
+
+    return '';
+  }
+
+  loginWithEmail(): void {
+    this.changeSlides(true, 1);
+  }
+
+  closeLoginWithEmail(): void {
+    this.changeSlides(false, 0);
+  }
+
+  changeSlides(isLoginWithEmail: boolean, indexSlide: number): void {
+    this.setAuthenticationRequestNull();
+    this.isLoginWithEmail = isLoginWithEmail;
+    this.slides.lockSwipes(false);
+    this.slides.slideTo(indexSlide);
+    this.slides.lockSwipes(true);
+  }
+
+  setAuthenticationRequestNull(): void {
+    this.authenticationRequest.email = '';
+    this.authenticationRequest.password = '';
   }
 
 }
