@@ -25,10 +25,10 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBarService.changeBackgroundStatusBar('black');
+      this.statusBarService.changeBackgroundStatusBar('#000', false);
       const splash: HTMLElement = document.getElementById('splash');
       timer(5000).subscribe(() => {
-        this.statusBarService.changeBackgroundStatusBar('white');
+        this.statusBarService.changeBackgroundStatusBar('#EEF3FF', true);
         splash.style.display = 'none';
       });
 

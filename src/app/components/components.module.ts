@@ -10,6 +10,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { EmployeeComponent } from './employess/employee.component';
 import { EmployeeDetailComponent } from './employess/detail/employeeDetail.component';
 import { RatingInputComponent } from './rating-input/rating-input.component';
+import { SkChaseComponent } from './loadings/sk-chase/sk-chase.component';
 
 @NgModule({
   entryComponents: [
@@ -18,6 +19,7 @@ import { RatingInputComponent } from './rating-input/rating-input.component';
   declarations: [
     HeaderComponent,
     SplashComponent,
+    SkChaseComponent,
     CompanyComponent,
     EmployeeComponent,
     EmployeeDetailComponent,
@@ -28,6 +30,7 @@ import { RatingInputComponent } from './rating-input/rating-input.component';
   exports: [
     HeaderComponent,
     SplashComponent,
+    SkChaseComponent,
     CompanyComponent,
     EmployeeComponent,
     EmployeeDetailComponent,

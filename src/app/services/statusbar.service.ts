@@ -1,26 +1,18 @@
-import { Injectable } from "@angular/core";
-import { StatusBar } from "@ionic-native/status-bar/ngx";
+import { Injectable } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class StatusbarService {
-  constructor(private _statusBar: StatusBar) { }
+  constructor(private statusBar: StatusBar) { }
 
-  changeBackgroundStatusBar(color: string) {
-    let styleDefault: boolean;
-    switch (color) {
-      case "white":
-        styleDefault = true;
-        this._statusBar.backgroundColorByHexString("#fff");
-        break;
-      case "black":
-        styleDefault = false;
-        this._statusBar.backgroundColorByHexString("#000");
-        break;
-    }
+  // TRUE: Color Default (Black)
+  // FALSE: Color Ligth (White)
+  changeBackgroundStatusBar(colorHexadecimal: string, statusBarFontColor: boolean) {
+    this.statusBar.backgroundColorByHexString(colorHexadecimal);
 
-    if (styleDefault) this._statusBar.styleDefault();
-    else this._statusBar.styleLightContent();
+    if (statusBarFontColor) { this.statusBar.styleDefault(); }
+    else { this.statusBar.styleLightContent(); }
   }
 }

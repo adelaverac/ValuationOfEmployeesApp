@@ -34,7 +34,7 @@ export class EmployeeComponent implements OnInit {
                 employee
             }
         });
-        this._statusBarService.changeBackgroundStatusBar("black");
+        this._statusBarService.changeBackgroundStatusBar('#000', false);
         modal.present();
     }
 

@@ -53,6 +53,12 @@
   margin-top: 50px;
 }
 
+.button-footer-floating {
+  height: auto;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
 // Template
 
 // Custom variables
@@ -124,7 +130,7 @@ ion-content {
     flex-shrink: 0;
     min-height: auto;
     min-height: fit-content;
-    max-width: 30vh;
+    max-width: 60vh;
     padding: 0px;
     margin-top: 15px;
   }
@@ -247,43 +253,3 @@ ion-content {
     }
   }
 }
-
-// :host(.first-slide-active) {
-//   .skip-walkthrough-button {
-//     visibility: hidden;
-//   }
-// }
-
-// :host(.last-slide-active) {
-//   ::ng-deep .walkthrough-slides {
-//     .swiper-pagination {
-//       display: none;
-//     }
-//   }
-
-//   // .skip-walkthrough-button {
-//   //   visibility: hidden;
-//   // }
-// }
-
-// // ISSUE: .swiper-paggination gets rendered dynamically. That prevents styling the elements when using the default Angular ViewEncapsulation.None
-// //        (Angular doesn't add an '_ngcontent' attribute to the .swiper-paggination because it's dynamically rendered)
-// // FIX:   See: https://stackoverflow.com/a/36265072/1116959
-// :host ::ng-deep .walkthrough-slides {
-//   .swiper-pagination {
-//     height: var(--page-swiper-pagination-height);
-//     line-height: 1;
-//     // .swiper-pagination is 18px height, .slide-inner-row has 40px of padding-bottom => bottom = (40px - 18px)/2 = 11px
-//     bottom: calc(
-//       (
-//           var(--page-swiper-pagination-space) -
-//             var(--page-swiper-pagination-height)
-//         ) / 2
-//     );
-
-//     .swiper-pagination-bullet {
-//       width: var(--page-pagination-bullet-size);
-//       height: var(--page-pagination-bullet-size);
-//     }
-//   }
-// }

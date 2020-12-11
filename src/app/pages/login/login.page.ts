@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, MenuController, NavController } from '@ionic/angular';
+import { finalize } from 'rxjs/operators';
 import { AuthenticationRequest } from 'src/app/models/authentication/authenticationRequest';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommomService } from 'src/app/services/commom.service';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
+import { StatusbarService } from 'src/app/services/statusbar.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,8 @@ export class LoginPage implements OnInit {
     private authenticationService: AuthenticationService,
     private localStorageService: LocalStorageService,
     private navCtrl: NavController,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private statusBarService: StatusbarService
   ) {
     this.authenticationRequest = new AuthenticationRequest();
   }
@@ -51,7 +54,6 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    this.commomService.showLoading('Iniciando sesión...');
     const isValid = this.isValid();
 
     if (!(isValid === '')) {
@@ -60,7 +62,10 @@ export class LoginPage implements OnInit {
       return;
     }
 
+    document.dispatchEvent(new CustomEvent('sk-chase:show'));
+
     this.authenticationService.login(this.authenticationRequest)
+      .pipe(finalize(() => { document.dispatchEvent(new CustomEvent('sk-chase:hide')); }))
       .subscribe(result => {
         const { token, userViewModel, level, messageResponse } = result;
         if (!(level === 'SUCCESS')) {
@@ -72,7 +77,6 @@ export class LoginPage implements OnInit {
         this.menuCtrl.enable(true);
         this.navCtrl.navigateRoot('/main/tabs/tab1', { animated: true });
       }, err => {
-        this.commomService.hideLoading();
         this.commomService.presentToastError(err);
       }, () => this.commomService.hideLoading());
   }
@@ -91,10 +95,12 @@ export class LoginPage implements OnInit {
 
   loginWithEmail(): void {
     this.changeSlides(true, 1);
+    this.statusBarService.changeBackgroundStatusBar('#FFF', true);
   }
 
   closeLoginWithEmail(): void {
     this.changeSlides(false, 0);
+    this.statusBarService.changeBackgroundStatusBar('#EEF3FF', true);
   }
 
   changeSlides(isLoginWithEmail: boolean, indexSlide: number): void {

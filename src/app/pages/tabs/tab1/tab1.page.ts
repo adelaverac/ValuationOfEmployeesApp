@@ -4,6 +4,7 @@ import { Company } from 'src/app/interfaces/company/company';
 import { Employee } from 'src/app/interfaces/employee/employee';
 import { CompanyService } from 'src/app/services/companies.service';
 import { EmployeeService } from 'src/app/services/employees.service';
+import { StatusbarService } from 'src/app/services/statusbar.service';
 
 @Component({
     selector: 'app-tab1',
@@ -12,20 +13,22 @@ import { EmployeeService } from 'src/app/services/employees.service';
 })
 export class Tab1Page implements OnInit {
 
-    //companies: Company[] = [];
+    // companies: Company[] = [];
     companies: Observable<Company[]>;
     employees: Observable<Employee[]>;
 
-    showCompany: boolean = true;
+    showCompany = true;
 
     constructor(
-        private _companiesService: CompanyService,
-        private _employeesService: EmployeeService
+        private companiesService: CompanyService,
+        private employeesService: EmployeeService,
+        private statusBarService: StatusbarService
     ) {
 
     }
 
     ngOnInit() {
+        this.statusBarService.changeBackgroundStatusBar('#FFF', true);
         this.loadCompanies();
         this.loadEmployees();
     }
@@ -35,7 +38,7 @@ export class Tab1Page implements OnInit {
     // }
 
     loadCompanies(event?) {
-        this.companies = this._companiesService.getAllSampleData();
+        this.companies = this.companiesService.getAllSampleData();
         // this._companiesService.getAllSampleData()
         //     .subscribe(result => {
         //         if (result.companies.length === 0) {
@@ -54,7 +57,7 @@ export class Tab1Page implements OnInit {
     }
 
     loadEmployees() {
-        this.employees = this._employeesService.getAllSampleData();
+        this.employees = this.employeesService.getAllSampleData();
     }
 
     segmentChanged(event) {

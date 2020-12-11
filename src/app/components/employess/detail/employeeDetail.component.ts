@@ -32,8 +32,7 @@ export class EmployeeDetailComponent implements OnInit {
     }
 
     close() {
-        console.log("Cerrar");
-        this._statusBarService.changeBackgroundStatusBar("white");
+        this._statusBarService.changeBackgroundStatusBar('#FFF', true);
         this._modalController.dismiss();
     }
 
