@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { CreateOrEditUser } from 'src/app/interfaces/users/createOrEditUser';
+import { CommomService } from 'src/app/services/commom.service';
+import { StatusbarService } from 'src/app/services/statusbar.service';
 
 @Component({
     selector: 'app-createaccount',
@@ -7,10 +9,13 @@ import { NavController } from '@ionic/angular';
 })
 export class CreateAccountPage implements OnInit {
 
+    createOrEdit: CreateOrEditUser;
+
     showPassword = false;
     passwordToggleIcon = 'eye-outline';
     constructor(
-        private navCtrl: NavController,
+        private statusBarService: StatusbarService,
+        private commomService: CommomService
     ) {
 
     }
@@ -19,4 +24,40 @@ export class CreateAccountPage implements OnInit {
 
     }
 
+    createNewAccount(): void {
+        const isValid = this.isValid();
+
+        if (!(isValid === '')) {
+            this.commomService.presentToastError(isValid);
+            return;
+        }
+    }
+
+    closeCreateNewAccount(): void {
+        this.statusBarService.changeBackgroundStatusBar('#EEF3FF', true);
+    }
+
+    private isValid(): string {
+        if (this.createOrEdit.user.name === '') {
+            return 'Ingrese su nombre';
+        }
+
+        if (this.createOrEdit.user.lastName === '') {
+            return 'Ingrese su apellido';
+        }
+
+        if (this.createOrEdit.user.email === '') {
+            return 'Ingrese su correo';
+        }
+
+        if (this.createOrEdit.user.password === '') {
+            return 'Ingrese su contraseña';
+        }
+
+        if (this.createOrEdit.user.password.length <= 6) {
+            return 'La contraseña debe contener más de 6 caracteres';
+        }
+
+        return '';
+    }
 }

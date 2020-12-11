@@ -1,0 +1,66 @@
+<ion-content>
+    <!-- Create Account Information -->
+    <ion-header class="ion-no-border">
+        <ion-toolbar style="border-bottom: 1px solid rgba(0,0,0,.09);">
+            <ion-button type="button" color="medium" fill="clear" style="float: left;"
+                (click)="closeCreateNewAccount()">
+                Salir
+            </ion-button>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-grid fixed class="grid-authentication">
+
+        <ion-row>
+            <ion-col size="12">
+
+                <ion-list>
+
+                    <ion-list-header>Crear nueva cuenta</ion-list-header>
+
+                    <ion-item mode="ios" lines="none" class="input-border margin-15">
+                        <ion-icon class="padding-10" color="primary" name="mail-outline"></ion-icon>
+                        <ion-input name="name" placeholder="Nombre" type="text"
+                            [(ngModel)]="user.name"></ion-input>
+                    </ion-item>
+
+                    <ion-item mode="ios" lines="none" class="input-border margin-15">
+                        <ion-icon class="padding-10" color="primary" name="mail-outline"></ion-icon>
+                        <ion-input name="lastName" placeholder="Apellido" type="text"
+                            [(ngModel)]="user.lastName"></ion-input>
+                    </ion-item>
+
+                    <ion-item mode="ios" lines="none" class="input-border margin-15">
+                        <ion-icon class="padding-10" color="primary" name="mail-outline"></ion-icon>
+                        <ion-input name="cellPhone" placeholder="Teléfono" type="text"
+                            [(ngModel)]="user.cellPhone"></ion-input>
+                    </ion-item>
+
+                    <ion-item mode="ios" lines="none" class="input-border margin-15">
+                        <ion-icon class="padding-10" color="primary" name="mail-outline"></ion-icon>
+                        <ion-input name="email" placeholder="Correo" type="email"
+                            [(ngModel)]="user.email"></ion-input>
+                    </ion-item>
+
+                    <ion-item mode="ios" lines="none" class="input-border margin-15">
+                        <ion-icon class="padding-10" color="primary" name="key-outline"></ion-icon>
+                        <ion-input name="password" placeholder="Contraseña"
+                            [type]="showPassword ? 'text': 'password' "
+                            [(ngModel)]="user.password"></ion-input>
+                        <ion-icon color="primary" slot="end" [name]="passwordToggleIcon"
+                            (click)="togglePassword()"></ion-icon>
+                    </ion-item>
+
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <div class="button-footer-floating">
+        <ion-button class="button-circle-custom-right" type="button" color="tertiary" shape="round"
+            size="large" mode="ios" (click)="createNewAccount()">
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+    </div>
+</ion-content>

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, MenuController, NavController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { AuthenticationRequest } from 'src/app/models/authentication/authenticationRequest';
+import { AuthenticationRequest } from 'src/app/interfaces/authentication/authenticationRequest';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommomService } from 'src/app/services/commom.service';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
@@ -32,9 +32,7 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private menuCtrl: MenuController,
     private statusBarService: StatusbarService
-  ) {
-    this.authenticationRequest = new AuthenticationRequest();
-  }
+  ) { }
 
   ngOnInit() {
     this.slides.lockSwipes(true);
@@ -81,7 +79,21 @@ export class LoginPage implements OnInit {
       }, () => this.commomService.hideLoading());
   }
 
-  isValid(): string {
+  loginWithEmail(): void {
+    this.changeSlides(true, 1);
+    this.statusBarService.changeBackgroundStatusBar('#FFF', true);
+  }
+
+  closeLoginWithEmail(): void {
+    this.changeSlides(false, 0);
+    this.statusBarService.changeBackgroundStatusBar('#EEF3FF', true);
+  }
+
+  createAccount(): void {
+    this.navCtrl.navigateRoot('/main/createAccount', { animated: true });
+  }
+
+  private isValid(): string {
     if (this.authenticationRequest.email === '') {
       return 'Ingrese su correo';
     }
@@ -93,17 +105,7 @@ export class LoginPage implements OnInit {
     return '';
   }
 
-  loginWithEmail(): void {
-    this.changeSlides(true, 1);
-    this.statusBarService.changeBackgroundStatusBar('#FFF', true);
-  }
-
-  closeLoginWithEmail(): void {
-    this.changeSlides(false, 0);
-    this.statusBarService.changeBackgroundStatusBar('#EEF3FF', true);
-  }
-
-  changeSlides(isLoginWithEmail: boolean, indexSlide: number): void {
+  private changeSlides(isLoginWithEmail: boolean, indexSlide: number): void {
     this.setAuthenticationRequestNull();
     this.isLoginWithEmail = isLoginWithEmail;
     this.slides.lockSwipes(false);
@@ -111,7 +113,7 @@ export class LoginPage implements OnInit {
     this.slides.lockSwipes(true);
   }
 
-  setAuthenticationRequestNull(): void {
+  private setAuthenticationRequestNull(): void {
     this.authenticationRequest.email = '';
     this.authenticationRequest.password = '';
   }
