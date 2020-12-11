@@ -9,7 +9,7 @@ import { StatusbarService } from 'src/app/services/statusbar.service';
 })
 export class CreateAccountPage implements OnInit {
 
-    createOrEdit: CreateOrEditUser;
+    createOrEditUser: CreateOrEditUser;
 
     showPassword = false;
     passwordToggleIcon = 'eye-outline';
@@ -38,23 +38,23 @@ export class CreateAccountPage implements OnInit {
     }
 
     private isValid(): string {
-        if (this.createOrEdit.user.name === '') {
+        if (this.createOrEditUser.name === '') {
             return 'Ingrese su nombre';
         }
 
-        if (this.createOrEdit.user.lastName === '') {
+        if (this.createOrEditUser.lastName === '') {
             return 'Ingrese su apellido';
         }
 
-        if (this.createOrEdit.user.email === '') {
+        if (this.createOrEditUser.email === '') {
             return 'Ingrese su correo';
         }
 
-        if (this.createOrEdit.user.password === '') {
+        if (this.createOrEditUser.password === '') {
             return 'Ingrese su contraseña';
         }
 
-        if (this.createOrEdit.user.password.length <= 6) {
+        if (this.createOrEditUser.password.length <= 6) {
             return 'La contraseña debe contener más de 6 caracteres';
         }
 

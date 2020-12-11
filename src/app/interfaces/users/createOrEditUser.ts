@@ -1,5 +1,6 @@
 import { User } from './user';
 
-export interface CreateOrEditUser {
-    user: User;
+// tslint:disable-next-line: no-empty-interface
+export interface CreateOrEditUser extends User {
+
 }

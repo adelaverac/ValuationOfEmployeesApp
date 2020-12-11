@@ -21,32 +21,32 @@
                     <ion-item mode="ios" lines="none" class="input-border margin-15">
                         <ion-icon class="padding-10" color="primary" name="mail-outline"></ion-icon>
                         <ion-input name="name" placeholder="Nombre" type="text"
-                            [(ngModel)]="user.name"></ion-input>
+                            [(ngModel)]="createOrEditUser.name"></ion-input>
                     </ion-item>
 
                     <ion-item mode="ios" lines="none" class="input-border margin-15">
                         <ion-icon class="padding-10" color="primary" name="mail-outline"></ion-icon>
                         <ion-input name="lastName" placeholder="Apellido" type="text"
-                            [(ngModel)]="user.lastName"></ion-input>
+                            [(ngModel)]="createOrEditUser.lastName"></ion-input>
                     </ion-item>
 
                     <ion-item mode="ios" lines="none" class="input-border margin-15">
                         <ion-icon class="padding-10" color="primary" name="mail-outline"></ion-icon>
                         <ion-input name="cellPhone" placeholder="Teléfono" type="text"
-                            [(ngModel)]="user.cellPhone"></ion-input>
+                            [(ngModel)]="createOrEditUser.cellPhone"></ion-input>
                     </ion-item>
 
                     <ion-item mode="ios" lines="none" class="input-border margin-15">
                         <ion-icon class="padding-10" color="primary" name="mail-outline"></ion-icon>
                         <ion-input name="email" placeholder="Correo" type="email"
-                            [(ngModel)]="user.email"></ion-input>
+                            [(ngModel)]="createOrEditUser.email"></ion-input>
                     </ion-item>
 
                     <ion-item mode="ios" lines="none" class="input-border margin-15">
                         <ion-icon class="padding-10" color="primary" name="key-outline"></ion-icon>
                         <ion-input name="password" placeholder="Contraseña"
                             [type]="showPassword ? 'text': 'password' "
-                            [(ngModel)]="user.password"></ion-input>
+                            [(ngModel)]="createOrEditUser.password"></ion-input>
                         <ion-icon color="primary" slot="end" [name]="passwordToggleIcon"
                             (click)="togglePassword()"></ion-icon>
                     </ion-item>
