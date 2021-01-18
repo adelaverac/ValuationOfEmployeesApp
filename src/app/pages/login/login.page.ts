@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, MenuController, NavController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { MenuController, NavController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { AuthenticationRequest } from 'src/app/interfaces/authentication/authenticationRequest';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommomService } from 'src/app/services/commom.service';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
 import { StatusbarService } from 'src/app/services/statusbar.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -18,28 +17,28 @@ import { StatusbarService } from 'src/app/services/statusbar.service';
 })
 export class LoginPage implements OnInit {
 
-  @ViewChild('slideLogin', { static: true }) slides: IonSlides;
-
-  authenticationRequest: AuthenticationRequest;
+  authenticationRequest = {} as AuthenticationRequest;
 
   isLoginWithEmail = false;
   showPassword = false;
   passwordToggleIcon = 'eye-outline';
+
   constructor(
     private commomService: CommomService,
     private authenticationService: AuthenticationService,
     private localStorageService: LocalStorageService,
-    private navCtrl: NavController,
-    private menuCtrl: MenuController,
+    private navController: NavController,
+    private menuController: MenuController,
     private statusBarService: StatusbarService
   ) { }
 
   ngOnInit() {
-    this.slides.lockSwipes(true);
+    this.statusBarService.changeBackgroundStatusBar('#FFF', true);
+    this.initValues();
   }
 
   ionViewWillEnter() {
-    this.menuCtrl.enable(false);
+    this.menuController.enable(false);
   }
 
   togglePassword(): void {
@@ -51,46 +50,39 @@ export class LoginPage implements OnInit {
     }
   }
 
-  async login() {
+  login() {
     const isValid = this.isValid();
 
     if (!(isValid === '')) {
-      this.commomService.hideLoading();
       this.commomService.presentToastError(isValid);
       return;
     }
 
-    document.dispatchEvent(new CustomEvent('sk-chase:show'));
+    this.commomService.showLoadingCustom();
 
     this.authenticationService.login(this.authenticationRequest)
-      .pipe(finalize(() => { document.dispatchEvent(new CustomEvent('sk-chase:hide')); }))
+      .pipe(finalize(() => { this.commomService.hideLoadingCustom(); }))
       .subscribe(result => {
-        const { token, userViewModel, level, messageResponse } = result;
+        const { token, user, level, message } = result;
         if (!(level === 'SUCCESS')) {
-          this.commomService.presentToastError(messageResponse);
+          this.commomService.presentToastError(message);
           return;
         }
 
         this.localStorageService.setToken(token);
-        this.menuCtrl.enable(true);
-        this.navCtrl.navigateRoot('/main/tabs/tab1', { animated: true });
+        this.menuController.enable(true);
+        this.navController.navigateRoot('/main/tabs/tab1', { animated: true });
       }, err => {
         this.commomService.presentToastError(err);
-      }, () => this.commomService.hideLoading());
-  }
-
-  loginWithEmail(): void {
-    this.changeSlides(true, 1);
-    this.statusBarService.changeBackgroundStatusBar('#FFF', true);
+      }, () => this.commomService.hideLoadingCustom());
   }
 
   closeLoginWithEmail(): void {
-    this.changeSlides(false, 0);
-    this.statusBarService.changeBackgroundStatusBar('#EEF3FF', true);
+    this.navController.navigateRoot('/welcome', { animated: true });
   }
 
   createAccount(): void {
-    this.navCtrl.navigateRoot('/main/createAccount', { animated: true });
+    this.navController.navigateRoot('/createAccount', { animated: true });
   }
 
   private isValid(): string {
@@ -105,12 +97,8 @@ export class LoginPage implements OnInit {
     return '';
   }
 
-  private changeSlides(isLoginWithEmail: boolean, indexSlide: number): void {
+  private initValues(): void {
     this.setAuthenticationRequestNull();
-    this.isLoginWithEmail = isLoginWithEmail;
-    this.slides.lockSwipes(false);
-    this.slides.slideTo(indexSlide);
-    this.slides.lockSwipes(true);
   }
 
   private setAuthenticationRequestNull(): void {

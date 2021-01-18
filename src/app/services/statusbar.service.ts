@@ -12,7 +12,11 @@ export class StatusbarService {
   changeBackgroundStatusBar(colorHexadecimal: string, statusBarFontColor: boolean) {
     this.statusBar.backgroundColorByHexString(colorHexadecimal);
 
-    if (statusBarFontColor) { this.statusBar.styleDefault(); }
-    else { this.statusBar.styleLightContent(); }
+    if (statusBarFontColor) {
+      this.statusBar.styleDefault();
+    }
+    else {
+      this.statusBar.styleLightContent();
+    }
   }
 }

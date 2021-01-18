@@ -1,0 +1,68 @@
+<ion-content>
+    <!-- Slides-->
+    <ion-slides class="walkthrough-slides" #slideWelcome [options]="slideOptions">
+
+        <ion-slide *ngFor="let slide of slides" class="last-slide illustration-and-decoration-slide">
+            <ion-row class="slide-inner-row">
+                <ion-col class="illustration-col">
+                    <app-aspect-ratio [ratio]="{w:924, h:819}">
+                        <app-image-shell class="illustration-image" animation="spinner"
+                            [src]="slide.imagePath" [alt]="'walkthrough'"></app-image-shell>
+                    </app-aspect-ratio>
+                </ion-col>
+
+                <ion-col class="decoration-col">
+                    <svg class="vector-decoration" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="100px" width="100%"
+                        viewBox="0 0 64 18" style="enable-background:new 0 0 64 24;" xml:space="preserve"
+                        preserveAspectRatio="none">
+                        <path d="M0 0 L64 0 L64 10 Q56 24 46 12 Q34 0 26 8 Q10 22 0 8 Z" />
+                    </svg>
+                </ion-col>
+
+                <ion-col class="info-col info-welcome">
+                    <ion-row class="info-outer">
+                        <ion-col>
+                            <div class="info-wrapper">
+                                <h3 class="info-title">{{ slide.title }}</h3>
+                                <p class="info-paragraph">
+                                    {{ slide.description }}
+                                </p>
+                                <br>
+                                <ion-button class="buttom-custom-75-porc" expand="block" color="tertiary" fill="solid"
+                                    shape="round" mode="ios" (click)="loginWithEmail()">
+                                    <ion-icon slot="start" name="mail-outline"></ion-icon>
+                                    Continuar con e-mail
+                                </ion-button>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-slide>
+
+    </ion-slides>
+</ion-content>
+
+<ion-footer no-border mode="ios" style="position: absolute; bottom: 0; margin: 0px 0px 5px 0px">
+    <ion-row class="info-footer">
+        <ion-col style="text-align: center">
+            <ion-note style="font-size: 13px" color="medium">Conéctate por redes sociales</ion-note>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-button shape="round" expand="full" fill="outline" color="facebook" mode="ios">
+                <ion-icon name="logo-facebook" slot="start"></ion-icon>
+                Facebook
+            </ion-button>
+        </ion-col>
+
+        <ion-col>
+            <ion-button shape="round" expand="full" fill="outline" color="google" mode="ios">
+                <ion-icon name="logo-google" slot="start"></ion-icon>
+                Google
+            </ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

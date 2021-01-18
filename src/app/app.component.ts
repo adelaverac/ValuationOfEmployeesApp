@@ -25,13 +25,13 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBarService.changeBackgroundStatusBar('#000', false);
-      const splash: HTMLElement = document.getElementById('splash');
-      timer(5000).subscribe(() => {
-        this.statusBarService.changeBackgroundStatusBar('#EEF3FF', true);
-        splash.style.display = 'none';
-      });
-
+      // this.statusBarService.changeBackgroundStatusBar('#000', false);
+      // const splash: HTMLElement = document.getElementById('splash');
+      // timer(5000).subscribe(() => {
+      //   this.statusBarService.changeBackgroundStatusBar('#EEF3FF', true);
+      //   splash.style.display = 'none';
+      // });
+      this.statusBarService.changeBackgroundStatusBar('#EEF3FF', true);
       this.loadMenuOptions();
     });
   }

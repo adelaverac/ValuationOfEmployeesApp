@@ -1,126 +1,56 @@
 <ion-content>
-  <!-- Welcome Information -->
-  <ion-slides class="walkthrough-slides" #slideLogin>
-    <ion-slide class="last-slide illustration-and-decoration-slide">
-      <ion-row class="slide-inner-row">
-        <ion-col class="illustration-col">
-          <app-aspect-ratio [ratio]="{w:924, h:819}">
-            <app-image-shell class="illustration-image" animation="spinner"
-              [src]="'./assets/svg/walkthrough-illustration-4.svg'" [alt]="'walkthrough'"></app-image-shell>
-          </app-aspect-ratio>
-        </ion-col>
+  <!-- Screen of Welcome -->
+  <ion-header class="ion-no-border">
+      <ion-toolbar style="border-bottom: 1px solid rgba(0,0,0,.09);">
+          <ion-button type="button" color="medium" fill="clear" style="float: left;"
+              (click)="closeLoginWithEmail()">
+              Salir
+          </ion-button>
+      </ion-toolbar>
+  </ion-header>
 
-        <ion-col class="decoration-col">
-          <!-- http://jxnblk.com/paths/?d=M0%200%20L64%200%20L64%2010%20Q56%2024%2046%2012%20Q34%200%2026%208%20Q10%2022%200%208%20Z -->
-          <svg class="vector-decoration" version="1.1" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="100px" width="100%" viewBox="0 0 64 18"
-            style="enable-background:new 0 0 64 24;" xml:space="preserve" preserveAspectRatio="none">
-            <path d="M0 0 L64 0 L64 10 Q56 24 46 12 Q34 0 26 8 Q10 22 0 8 Z" />
-          </svg>
-        </ion-col>
+  <ion-grid fixed class="grid-authentication">
 
-        <ion-col class="info-col info-welcome">
-          <ion-row class="info-outer">
-            <ion-col>
-              <div class="info-wrapper">
-                <h3 class="info-title">Bienvenido a Guudjob</h3>
-                <p class="info-paragraph">
-                  Aplicación movil de experiencia de empleado para impactar en la productividad y motivación
-                </p>
-                <br>
-                <ion-button class="buttom-custom-75-porc" expand="block" color="tertiary" fill="solid" shape="round" mode="ios"
-                      (click)="loginWithEmail()">
-                  <ion-icon slot="start" name="mail-outline"></ion-icon>
-                  Continuar con e-mail
-                </ion-button>
-              </div>
-            </ion-col>
-          </ion-row>
+      <ion-row>
+          <ion-col size="12">
+
+              <ion-list>
+
+                  <ion-list-header>Iniciar sesion</ion-list-header>
+
+                  <ion-item mode="ios" lines="none" class="input-border margin-15">
+                      <ion-icon class="padding-10" color="primary" name="mail-outline"></ion-icon>
+                      <ion-input name="email" placeholder="Correo" type="email"
+                          [(ngModel)]="authenticationRequest.email"></ion-input>
+                  </ion-item>
+
+                  <ion-item mode="ios" lines="none" class="input-border margin-15">
+                      <ion-icon class="padding-10" color="primary" name="key-outline"></ion-icon>
+                      <ion-input name="password" placeholder="Contraseña"
+                          [type]="showPassword ? 'text': 'password' "
+                          [(ngModel)]="authenticationRequest.password"></ion-input>
+                      <ion-icon color="primary" slot="end" [name]="passwordToggleIcon"
+                          (click)="togglePassword()"></ion-icon>
+                  </ion-item>
+
+              </ion-list>
+          </ion-col>
+      </ion-row>
+
+      <ion-row style="text-align: center;">
+        <ion-col size="12">
+          <ion-note style="font-size: 14px;" color="medium">¿No tienes una cuenta?
+            <a color="tertiary" style="font-weight: bold; text-decoration: underline;" (click)="createAccount()">Regístrate</a>
+          </ion-note>
         </ion-col>
       </ion-row>
 
-    </ion-slide>
+  </ion-grid>
 
-    <!-- Login Information -->
-    <ion-slide>
-
-      <ion-content>
-        <ion-header class="ion-no-border">
-          <ion-toolbar style="border-bottom: 1px solid rgba(0,0,0,.09);">
-            <ion-button type="button" color="medium" fill="clear" style="float: left;"
-                  (click)="closeLoginWithEmail()">
-              Salir
-            </ion-button>
-          </ion-toolbar>
-        </ion-header>
-
-        <ion-grid fixed class="grid-authentication">
-
-          <ion-row>
-            <ion-col size="12">
-  
-              <ion-list>
-
-                <ion-list-header>Iniciar sesión</ion-list-header>
-  
-                <ion-item mode="ios" lines="none" class="input-border margin-15">
-                  <ion-icon class="padding-10" color="primary" name="mail-outline"></ion-icon>
-                  <ion-input name="email" placeholder="Correo" type="email" [(ngModel)]="authenticationRequest.email"></ion-input>
-                </ion-item>
-  
-                <ion-item mode="ios" lines="none" class="input-border margin-15">
-                  <ion-icon class="padding-10" color="primary" name="key-outline"></ion-icon>
-                  <ion-input name="password" placeholder="Contraseña" [type]="showPassword ? 'text': 'password' " [(ngModel)]="authenticationRequest.password"></ion-input>
-                  <ion-icon color="primary" slot="end" [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
-                </ion-item>
-  
-              </ion-list>
-            </ion-col>
-          </ion-row>
-
-          <ion-row>
-            <ion-col size="12">
-              <ion-note style="font-size: 14px; margin: 0 auto" color="medium">¿No tienes una cuenta?
-                <a color="tertiary" style="font-weight: bold; text-decoration: underline;" (click)="createAccount()">Regístrate</a>
-              </ion-note>
-            </ion-col>
-          </ion-row>
-  
-        </ion-grid>
-
-        <div class="button-footer-floating">
-          <ion-button class="button-circle-custom-right" type="button" color="tertiary" shape="round" size="large" mode="ios"
-          (click)="login()">
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </ion-button>
-        </div>
-      </ion-content>
-
-
-    </ion-slide>
-
-  </ion-slides>
+  <div class="button-footer-floating">
+      <ion-button class="button-circle-custom-right" type="button" color="tertiary" shape="round"
+          size="large" mode="ios" (click)="login()">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+  </div>
 </ion-content>
-
-<ion-footer no-border mode="ios" style="position: absolute; bottom: 0; margin: 0px 0px 5px 0px" *ngIf="!isLoginWithEmail">
-  <ion-row class="info-footer">
-    <ion-col style="text-align: center">
-      <ion-note style="font-size: 13px" color="medium">Conéctate por redes sociales</ion-note>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button shape="round" expand="full" fill="outline" color="facebook" mode="ios">
-        <ion-icon name="logo-facebook" slot="start"></ion-icon>
-        Facebook
-      </ion-button>
-    </ion-col>
-
-    <ion-col>
-      <ion-button shape="round" expand="full" fill="outline" color="google" mode="ios">
-        <ion-icon name="logo-google" slot="start"></ion-icon>
-        Google
-      </ion-button>
-    </ion-col>
-  </ion-row>
-</ion-footer>

@@ -9,7 +9,7 @@ import { StatusbarService } from 'src/app/services/statusbar.service';
 })
 export class CreateAccountPage implements OnInit {
 
-    createOrEditUser: CreateOrEditUser;
+    createOrEditUser = {} as CreateOrEditUser;
 
     showPassword = false;
     passwordToggleIcon = 'eye-outline';
@@ -20,9 +20,7 @@ export class CreateAccountPage implements OnInit {
 
     }
 
-    ngOnInit() {
-
-    }
+    ngOnInit() { }
 
     createNewAccount(): void {
         const isValid = this.isValid();

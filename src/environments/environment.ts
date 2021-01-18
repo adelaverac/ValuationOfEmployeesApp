@@ -6,8 +6,8 @@ export const environment = {
   production: false
 };
 
-//export const serverURL = 'https://localhost:44327';
-export const serverURL = 'http://www.valuationofemployeedev.com';
+export const serverURL = 'https://localhost:44327';
+// export const serverURL = 'http://www.valuationofemployeedev.com';
 
 /*
  * For easier debugging in development mode, you can import the following file
