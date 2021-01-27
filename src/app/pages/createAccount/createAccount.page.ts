@@ -4,6 +4,8 @@ import { finalize } from 'rxjs/operators';
 import { CreateOrEditUser } from 'src/app/interfaces/users/createOrEditUser';
 import { AccountService } from 'src/app/services/account.service';
 import { CommomService } from 'src/app/services/commom.service';
+import { LocalStorageService } from 'src/app/services/localStorage.service';
+import { StatusbarService } from 'src/app/services/statusbar.service';
 
 @Component({
     selector: 'app-createaccount',
@@ -20,12 +22,13 @@ export class CreateAccountPage implements OnInit {
         private commomService: CommomService,
         private navController: NavController,
         private accountService: AccountService,
-        private menuController: MenuController
-    ) {
-
-    }
+        private menuController: MenuController,
+        private localStorageService: LocalStorageService,
+        private statusBarService: StatusbarService
+    ) { }
 
     ngOnInit() {
+        this.statusBarService.changeBackgroundStatusBar('#FFF', true);
         this.initValues();
     }
 
@@ -42,12 +45,14 @@ export class CreateAccountPage implements OnInit {
         this.accountService.createOrEditUser(this.createOrEditUser)
             .pipe(finalize(() => { this.commomService.hideLoadingCustom(); }))
             .subscribe(result => {
-                const { token, level, message } = result;
+                const { token, user, level, message } = result;
                 if (!(level === 'SUCCESS')) {
                     this.commomService.presentToastError(message);
                     return;
                 }
 
+                this.localStorageService.setToken(token);
+                this.localStorageService.setUserData(user);
                 this.menuController.enable(true);
                 this.navController.navigateRoot('/main/tabs/tab1', { animated: true });
             }, err => {
