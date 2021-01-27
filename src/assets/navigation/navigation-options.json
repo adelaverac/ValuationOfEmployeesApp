@@ -13,10 +13,5 @@
     "icon": "settings",
     "name": "Ajustes",
     "redirect": ""
-  },
-  {
-    "icon": "log-out",
-    "name": "Cerrar sesión",
-    "redirect": ""
   }
 ]

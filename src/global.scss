@@ -65,6 +65,20 @@
   padding: 50px 10px 0px 10px;
 }
 
+.button-circle-custom-right {
+  float: right;
+  margin: 30px;
+  height: 75px;
+  width: 75px;
+}
+
+.button-footer-floating {
+  height: auto;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
 //
 ion-searchbar {
   --box-shadow: none !important;

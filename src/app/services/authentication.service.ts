@@ -1,35 +1,28 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { EndpointService } from './endpoint.service';
-import { retry, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 import { AuthenticationRequest } from '../interfaces/authentication/authenticationRequest';
 import { AuthenticationResponse } from '../interfaces/authentication/authenticationResponse';
+import { LogoutRequest } from '../interfaces/authentication/logoutRequest';
+import { BasicResponse } from '../interfaces/commom/basicResponse';
+import { AppServiceBase } from '../shared/app.service';
+import { EndpointService } from './endpoint.service';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class AuthenticationService {
-
-    // Http Headers
-    httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
-            'Access-Control-Allow-Headers': 'origin, x-requested-with',
-        })
-    }
+export class AuthenticationService extends AppServiceBase {
 
     constructor(
         private http: HttpClient,
         private endpointService: EndpointService
-    ) { }
+    ) {
+        super();
+    }
 
     login(authenticationRequest: AuthenticationRequest): Observable<AuthenticationResponse> {
-        console.log(this.endpointService.pathLogin);
-        console.log(this.httpOptions);
         return this.http.post<AuthenticationResponse>(
             `${this.endpointService.pathLogin}`,
             JSON.stringify(authenticationRequest),
@@ -40,15 +33,15 @@ export class AuthenticationService {
         );
     }
 
-    // Error handling
-    errorHandl(error: any) {
-        let errorMessage = '';
-        if (error.error instanceof ErrorEvent) {
-            errorMessage = error.error.message; // Get client-side error
-        } else {
-            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`; // Get server-side error
-        }
-        return throwError(errorMessage);
+    logout(logoutRequest: LogoutRequest): Observable<BasicResponse> {
+        return this.http.post<BasicResponse>(
+            `${this.endpointService.pathLogout}`,
+            JSON.stringify(logoutRequest),
+            this.httpOptions
+        ).pipe(
+            retry(1),
+            catchError(this.errorHandl)
+        );
     }
 
 }

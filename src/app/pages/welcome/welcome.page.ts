@@ -6,7 +6,7 @@ import { Slide } from 'src/app/interfaces/slide/slide';
     selector: 'app-welcome',
     templateUrl: './welcome.page.html',
     styleUrls: [
-        './styles/welcome.page.scss',
+        './styles/welcome.scss',
         './styles/welcome.shell.scss',
         './styles/welcome.responsive.scss',
     ],

@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController, NavController } from '@ionic/angular';
+import { finalize } from 'rxjs/operators';
 import { CreateOrEditUser } from 'src/app/interfaces/users/createOrEditUser';
+import { AccountService } from 'src/app/services/account.service';
 import { CommomService } from 'src/app/services/commom.service';
-import { StatusbarService } from 'src/app/services/statusbar.service';
 
 @Component({
     selector: 'app-createaccount',
     templateUrl: './createAccount.page.html',
+    styleUrls: ['./styles/createAccount.scss']
 })
 export class CreateAccountPage implements OnInit {
 
@@ -14,13 +17,17 @@ export class CreateAccountPage implements OnInit {
     showPassword = false;
     passwordToggleIcon = 'eye-outline';
     constructor(
-        private statusBarService: StatusbarService,
-        private commomService: CommomService
+        private commomService: CommomService,
+        private navController: NavController,
+        private accountService: AccountService,
+        private menuController: MenuController
     ) {
 
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.initValues();
+    }
 
     createNewAccount(): void {
         const isValid = this.isValid();
@@ -29,10 +36,35 @@ export class CreateAccountPage implements OnInit {
             this.commomService.presentToastError(isValid);
             return;
         }
+
+        this.commomService.showLoadingCustom();
+
+        this.accountService.createOrEditUser(this.createOrEditUser)
+            .pipe(finalize(() => { this.commomService.hideLoadingCustom(); }))
+            .subscribe(result => {
+                const { token, level, message } = result;
+                if (!(level === 'SUCCESS')) {
+                    this.commomService.presentToastError(message);
+                    return;
+                }
+
+                this.menuController.enable(true);
+                this.navController.navigateRoot('/main/tabs/tab1', { animated: true });
+            }, err => {
+                this.commomService.presentToastError(err);
+            }, () => this.commomService.hideLoadingCustom());
     }
 
     closeCreateNewAccount(): void {
-        this.statusBarService.changeBackgroundStatusBar('#EEF3FF', true);
+        this.navController.navigateRoot('/login', { animated: true });
+    }
+
+    private initValues(): void {
+        this.createOrEditUser.name = '';
+        this.createOrEditUser.lastName = '';
+        this.createOrEditUser.cellPhone = '';
+        this.createOrEditUser.email = '';
+        this.createOrEditUser.password = '';
     }
 
     private isValid(): string {

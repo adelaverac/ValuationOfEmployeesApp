@@ -8,11 +8,11 @@ import { Navigation } from '../interfaces/nav/navigation';
 export class NavigationService {
 
     constructor(
-        private _httpClient: HttpClient
+        private httpClient: HttpClient
     ) { }
 
     getAll() {
-        return this._httpClient.get<Navigation[]>('/assets/navigation/navigation-options.json');
+        return this.httpClient.get<Navigation[]>('/assets/navigation/navigation-options.json');
     }
 
 }

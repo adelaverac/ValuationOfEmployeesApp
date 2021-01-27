@@ -64,12 +64,14 @@ export class LoginPage implements OnInit {
       .pipe(finalize(() => { this.commomService.hideLoadingCustom(); }))
       .subscribe(result => {
         const { token, user, level, message } = result;
+        console.log(result);
         if (!(level === 'SUCCESS')) {
           this.commomService.presentToastError(message);
           return;
         }
 
         this.localStorageService.setToken(token);
+        this.localStorageService.setUserData(user);
         this.menuController.enable(true);
         this.navController.navigateRoot('/main/tabs/tab1', { animated: true });
       }, err => {
@@ -98,10 +100,6 @@ export class LoginPage implements OnInit {
   }
 
   private initValues(): void {
-    this.setAuthenticationRequestNull();
-  }
-
-  private setAuthenticationRequestNull(): void {
     this.authenticationRequest.email = '';
     this.authenticationRequest.password = '';
   }

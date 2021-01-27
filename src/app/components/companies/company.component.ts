@@ -1,16 +1,17 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 import { Company } from 'src/app/interfaces/company/company';
 
 @Component({
-    selector: "companies",
-    templateUrl: "./company.component.html",
+    // tslint:disable-next-line: component-selector
+    selector: 'companies',
+    templateUrl: './company.component.html',
     styleUrls: ['./company.component.scss']
 })
 export class CompanyComponent implements OnInit {
 
     @Input() companies: Company[] = [];
 
-    searchCompany: string = '';
+    searchCompany = '';
 
     constructor() { }
 

@@ -107,11 +107,6 @@ export class CommomService {
         });
     }
 
-    // async hideLoading() {
-    //     this.isLoading = false;
-    //     return await this._loadingCtrl.dismiss();
-    // }
-
     showLoadingCustom(): void {
         document.dispatchEvent(new CustomEvent('sk-chase:show'));
     }

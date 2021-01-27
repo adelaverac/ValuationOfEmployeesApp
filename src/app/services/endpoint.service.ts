@@ -8,6 +8,10 @@ export class EndpointService {
 
     constructor() { }
 
-    readonly pathLogin = serverURL + '/api/valuationofemployee/v1/account/login';
+    // Authentication
+    readonly pathLogin = `${serverURL}/api/valuationofemployee/v1/account/login`;
+    readonly pathLogout = `${serverURL}/api/valuationofemployee/v1/account/logout`;
 
+    // Account
+    readonly pathCreateOrEditUser = `${serverURL}/api/valuationofemployee/v1/account/createOrEditUser`;
 }
