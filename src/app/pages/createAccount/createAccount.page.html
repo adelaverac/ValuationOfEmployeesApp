@@ -16,7 +16,11 @@
 
                 <ion-list>
 
-                    <ion-list-header>Crear nueva cuenta</ion-list-header>
+                    <ion-list-header class="margin-top-bottom-15">
+                        <p class="margin-auto">Crear nueva cuenta</p>
+                    </ion-list-header>
+
+                    <br>
 
                     <ion-item mode="ios" lines="none" class="input-border margin-15">
                         <ion-icon class="padding-10" color="primary" name="person-outline"></ion-icon>
@@ -28,12 +32,6 @@
                         <ion-icon class="padding-10" color="primary" name="person-outline"></ion-icon>
                         <ion-input name="lastName" placeholder="Apellido" type="text"
                             [(ngModel)]="createOrEditUser.lastName"></ion-input>
-                    </ion-item>
-
-                    <ion-item mode="ios" lines="none" class="input-border margin-15">
-                        <ion-icon class="padding-10" color="primary" name="call-outline"></ion-icon>
-                        <ion-input name="cellPhone" placeholder="Teléfono" type="text"
-                            [(ngModel)]="createOrEditUser.cellPhone"></ion-input>
                     </ion-item>
 
                     <ion-item mode="ios" lines="none" class="input-border margin-15">

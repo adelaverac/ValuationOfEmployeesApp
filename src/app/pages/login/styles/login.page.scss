@@ -18,7 +18,6 @@
 
 .info-footer div ion-note {
   vertical-align: top;
-  //font-weight: bold;
 }
 
 .info-footer div hr {
@@ -50,7 +49,17 @@
 }
 
 .grid-authentication {
-  margin-top: 50px;
+  margin-top: 20px;
+
+  .avatar {
+    height: auto;
+    width: auto;
+  }
+
+  .avatar-img {
+    height: 75px;
+    width: 75px;
+  }
 }
 
 .button-footer-floating {
