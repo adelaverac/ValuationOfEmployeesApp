@@ -5,18 +5,18 @@
   <ion-menu side="start" menuId="first" contentId="main">
     <ion-header class="ion-no-border">
       <div class="header-menu">
-        <ion-avatar slot="start">
+        <!-- <ion-avatar slot="start">
           <img src="./assets/svg/user.svg" />
         </ion-avatar>
         <ion-toolbar>
-          <h6>Andy Steven</h6>
-          <p class="cellphone">
+          <h6>{{ dataProvider.userData.name }}</h6>
+          <p class="cellphone" *ngIf="dataProvider.userData.cellPhone">
             <ion-icon
               slot="start"
               name="call-outline"
               class="icon-texto-header-menu"
             ></ion-icon>
-            0961063529
+            {{ dataProvider.userData.cellPhone }}
           </p>
           <hr />
           <p class="email">
@@ -25,27 +25,30 @@
               name="mail-outline"
               class="icon-texto-header-menu"
             ></ion-icon>
-            adelaverac@hotmail.com
+            {{ dataProvider.userData.email }}
           </p>
-        </ion-toolbar>
+        </ion-toolbar> -->
+      </div>
+      <div class="header-content">
+        <img src="./assets/svg/user.svg" />
+        <ion-label>
+          <h2>{{ dataProvider.userData.name }}</h2>
+          <p>{{ dataProvider.userData.email }}</p>
+        </ion-label>
       </div>
     </ion-header>
 
     <ion-content>
-      <ion-list>
-        <ion-menu-toggle *ngFor="let option of navigations | async">
-          <ion-item lines="none" detail>
-            <ion-icon [name]="option.icon" slot="start"></ion-icon>
-            <ion-label> {{ option.name }} </ion-label>
-          </ion-item>
-        </ion-menu-toggle>
+      <ion-list class="menu-items">
+        <ion-item lines="none" *ngFor="let option of navigations" [ngClass]="{'active': option.selected}" (click)="optionClick(option.id)">
+          <ion-icon [name]="option.icon" slot="start"></ion-icon>
+          {{ option.name }}
+        </ion-item>
 
-        <ion-menu-toggle>
-          <ion-item lines="none" detail (click)="logout()">
-            <ion-icon name="log-out" slot="start"></ion-icon>
-            <ion-label> Cerrar sesión </ion-label>
-          </ion-item>
-        </ion-menu-toggle>
+        <ion-item lines="none" [ngClass]="{'active': isLogout}" (click)="logout()">
+          <ion-icon name="log-out" slot="start"></ion-icon>
+          Cerrar sesión
+        </ion-item>
       </ion-list>
     </ion-content>
 

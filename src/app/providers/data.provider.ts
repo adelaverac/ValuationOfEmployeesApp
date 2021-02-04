@@ -28,4 +28,11 @@ export class DataProvider {
                 this.token = result;
             });
     }
+
+    destroyData(): void {
+        this.userData = {} as User;
+        this.token = '';
+        this.state = false;
+    }
+
 }

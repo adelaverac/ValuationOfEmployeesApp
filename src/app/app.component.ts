@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { MenuController, NavController, Platform } from '@ionic/angular';
 import { Observable, timer } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { elementAt, finalize } from 'rxjs/operators';
 import { LogoutRequest } from './interfaces/authentication/logoutRequest';
 import { Navigation } from './interfaces/nav/navigation';
 import { DataProvider } from './providers/data.provider';
@@ -20,7 +20,8 @@ import { AppComponentBase } from './shared/app.component';
 })
 export class AppComponent {
 
-  navigations: Observable<Navigation[]>;
+  navigations: Navigation[];
+  isLogout: boolean;
 
   constructor(
     private platform: Platform,
@@ -58,6 +59,7 @@ export class AppComponent {
       return;
     }
 
+    this.unselectedOptions();
     this.commomService.showLoadingCustom();
 
     const logoutRequest = {} as LogoutRequest;
@@ -75,13 +77,32 @@ export class AppComponent {
         }
 
         this.localStorageService.clearStorage();
+        this.dataProvider.destroyData();
         this.menuController.enable(false);
         this.navController.navigateRoot('/login', { animated: true });
       }, err => this.commomService.presentToastError(JSON.stringify(err)));
   }
 
+  optionClick(id): void {
+    this.isLogout = false;
+    this.navigations.forEach(element => {
+      if (element.id === id) {
+        element.selected = true;
+      } else {
+        element.selected = false;
+      }
+    });
+  }
+
+  private unselectedOptions(): void {
+    this.navigations.forEach(element => { element.selected = false; });
+    this.isLogout = true;
+  }
+
   private loadMenuOptions(): void {
-    this.navigations = this.navigationService.getAll();
+    this.navigationService.getAll().subscribe(result => {
+      this.navigations = result;
+    });
   }
 
   private validateUserDataInStorage(): void {

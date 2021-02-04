@@ -1,17 +1,23 @@
 [
   {
+    "id": 1,
     "icon": "person",
     "name": "Perfil",
-    "redirect": ""
+    "redirect": "",
+    "selected": false
   },
   {
+    "id": 2,
     "icon": "trending-up",
     "name": "Top profesionales",
-    "redirect": ""
+    "redirect": "",
+    "selected": false
   },
   {
+    "id": 3,
     "icon": "settings",
     "name": "Ajustes",
-    "redirect": ""
+    "redirect": "",
+    "selected": false
   }
 ]
