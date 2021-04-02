@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'createAccount', loadChildren: './pages/createAccount/createAccount.module#CreateAccountPageModule' },
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
+  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   {
     path: '**',
     redirectTo: 'page-not-found'

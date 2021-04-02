@@ -3,7 +3,7 @@
     "id": 1,
     "icon": "person",
     "name": "Perfil",
-    "redirect": "",
+    "redirect": "./profile",
     "selected": false
   },
   {
@@ -16,7 +16,7 @@
   {
     "id": 3,
     "icon": "settings",
-    "name": "Ajustes",
+    "name": "Configuración",
     "redirect": "",
     "selected": false
   }

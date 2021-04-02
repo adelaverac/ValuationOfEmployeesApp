@@ -13,6 +13,10 @@ export class DataProvider {
     constructor(
         private localStorageService: LocalStorageService
     ) {
+        this.fillProviderData();
+    }
+
+    fillProviderData(): void {
         this.localStorageService.getUserData()
             .then(result => {
                 this.userData = result;

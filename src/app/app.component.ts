@@ -108,7 +108,7 @@ export class AppComponent {
   private validateUserDataInStorage(): void {
     this.localStorageService.getUserData()
       .then(userData => {
-        if (userData) {
+        if (userData.idUser) {
           this.menuController.enable(true);
           this.navController.navigateRoot('/main/tabs/tab1', { animated: true });
         } else {

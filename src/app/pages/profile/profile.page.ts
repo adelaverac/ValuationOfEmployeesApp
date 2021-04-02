@@ -1,38 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { CreateOrEditUser } from 'src/app/interfaces/users/createOrEditUser';
+import { DataProvider } from 'src/app/providers/data.provider';
 import { AccountService } from 'src/app/services/account.service';
 import { CommomService } from 'src/app/services/commom.service';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
 import { StatusbarService } from 'src/app/services/statusbar.service';
 
 @Component({
-    selector: 'app-createaccount',
-    templateUrl: './createAccount.page.html',
-    styleUrls: ['./styles/createAccount.scss']
+    // tslint:disable-next-line: component-selector
+    selector: 'profile',
+    templateUrl: './profile.page.html',
+    styleUrls: ['./profile.page.scss']
 })
-export class CreateAccountPage implements OnInit {
+export class ProfilePage implements OnInit {
 
     createOrEditUser = {} as CreateOrEditUser;
 
-    showPassword = false;
-    passwordToggleIcon = 'eye-outline';
     constructor(
+        private statusBarService: StatusbarService,
+        private dataProvider: DataProvider,
         private commomService: CommomService,
-        private navController: NavController,
         private accountService: AccountService,
-        private menuController: MenuController,
-        private localStorageService: LocalStorageService,
-        private statusBarService: StatusbarService
+        private localStorageService: LocalStorageService
     ) { }
 
-    ngOnInit() {
-        this.statusBarService.changeBackgroundStatusBar('#FFF', true);
-        this.initValues();
+    ngOnInit(): void {
+        this.statusBarService.changeBackgroundStatusBar('#1a2639', false);
+        this.loadUserInformation();
     }
 
-    createNewAccount(): void {
+    update(): void {
         const isValid = this.isValid();
 
         if (!(isValid === '')) {
@@ -42,34 +40,32 @@ export class CreateAccountPage implements OnInit {
 
         this.commomService.showLoadingCustom();
 
-        this.accountService.createNewUser(this.createOrEditUser)
+        this.accountService.editUser(this.createOrEditUser)
             .pipe(finalize(() => { this.commomService.hideLoadingCustom(); }))
             .subscribe(result => {
-                const { token, user, level, message } = result;
+                const { user, level, message } = result;
+                console.log(result);
                 if (!(level === 'SUCCESS')) {
                     this.commomService.presentToastError(message);
                     return;
                 }
 
-                this.localStorageService.setToken(token);
-                this.localStorageService.setUserData(user);
-                this.menuController.enable(true);
-                this.navController.navigateRoot('/main/tabs/tab1', { animated: true });
+                this.localStorageService.removeKey('_userData')
+                    .then(() => {
+                        this.localStorageService.setUserData(user);
+                        this.commomService.presentToastSuccess(message);
+                    }).catch(err => {
+                        this.commomService.presentToastError('Ocurrio un error inesperado, volver a intentarlo');
+                    });
             }, err => {
                 this.commomService.presentToastError(err);
             }, () => this.commomService.hideLoadingCustom());
+
     }
 
-    closeCreateNewAccount(): void {
-        this.navController.navigateRoot('/login', { animated: true });
-    }
-
-    private initValues(): void {
-        this.createOrEditUser.name = '';
-        this.createOrEditUser.lastName = '';
-        this.createOrEditUser.cellPhone = '';
-        this.createOrEditUser.email = '';
-        this.createOrEditUser.password = '';
+    private loadUserInformation(): void {
+        this.createOrEditUser = this.dataProvider.userData as CreateOrEditUser;
+        console.log(this.createOrEditUser);
     }
 
     private isValid(): string {
@@ -85,14 +81,7 @@ export class CreateAccountPage implements OnInit {
             return 'Ingrese su correo';
         }
 
-        if (this.createOrEditUser.password === '') {
-            return 'Ingrese su contraseña';
-        }
-
-        if (this.createOrEditUser.password.length <= 6) {
-            return 'La contraseña debe contener más de 6 caracteres';
-        }
-
         return '';
     }
+
 }

@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border" translucent>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button icon="chevron-back"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="img-profile">
+        <img src="./assets/images/employess/Ana_Rodriguez.jpg" style="border-radius: 100%;" />
+    </div>
+    <div class="content">
+        <ion-list>
+            <ion-item mode="ios" lines="none" class="border-radius-15 margin-15">
+                <ion-icon class="padding-10" name="person"></ion-icon>
+                <ion-input name="name" placeholder="Digite su nombre" type="text" [(ngModel)]="createOrEditUser.name"></ion-input>
+            </ion-item>
+
+            <ion-item mode="ios" lines="none" class="border-radius-15 margin-15">
+                <ion-icon class="padding-10" name="person"></ion-icon>
+                <ion-input name="lastName" placeholder="Digite su apellido" type="text" [(ngModel)]="createOrEditUser.lastName"></ion-input>
+            </ion-item>
+
+            <ion-item mode="ios" lines="none" class="border-radius-15 margin-15">
+                <ion-icon class="padding-10" name="mail"></ion-icon>
+                <ion-input name="email" placeholder="Digite su correo" type="email" [(ngModel)]="createOrEditUser.email"></ion-input>
+            </ion-item>
+
+            <ion-item mode="ios" lines="none" class="border-radius-15 margin-15">
+                <ion-icon class="padding-10" name="call"></ion-icon>
+                <ion-input name="phone" placeholder="Digite su teléfono" type="number" [(ngModel)]="createOrEditUser.cellPhone"></ion-input>
+            </ion-item>
+
+            <ion-item mode="ios" lines="none" class="border-radius-15 margin-15">
+                <ion-label position="floating">Dirección</ion-label>
+                <ion-textarea rows="4" placeholder="Digite su dirección" [(ngModel)]="createOrEditUser.address"></ion-textarea>
+              </ion-item>
+
+            <ion-button class="buttom-custom-65-porc margin-top-50" expand="block" color="custom1" fill="solid" shape="round" mode="ios"
+                        (click)="update()">
+                Actualizar
+            </ion-button>
+
+        </ion-list>
+    </div>
+</ion-content>

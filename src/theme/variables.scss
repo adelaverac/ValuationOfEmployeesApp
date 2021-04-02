@@ -113,6 +113,20 @@
   --ion-color-github-contrast-rgb: 255, 255, 255;
   --ion-color-github-shade: #000000;
   --ion-color-github-tint: #1a1a1a;
+  /** custom1 **/
+  --ion-color-custom1: #1a2639;
+  --ion-color-custom1-rgb: 26, 38, 57;
+  --ion-color-custom1-contrast: #ffffff;
+  --ion-color-custom1-contrast-rgb: 255, 255, 255;
+  --ion-color-custom1-shade: #1b355e;
+  --ion-color-custom1-tint: #293952;
+  /** custom2 **/
+  --ion-color-custom2: #c24d2c;
+  --ion-color-custom2-rgb: 194, 77, 44;
+  --ion-color-custom2-contrast: #ffffff;
+  --ion-color-custom2-contrast-rgb: 255, 255, 255;
+  --ion-color-custom2-shade: #dc5732;
+  --ion-color-custom2-tint: #f7724e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -298,9 +312,27 @@
   --ion-color-tint: var(--ion-color-github-tint) !important;
 }
 
+.ion-color-custom1 {
+  --ion-color-base: var(--ion-color-custom1) !important;
+  --ion-color-base-rgb: var(--ion-color-custom1-rgb) !important;
+  --ion-color-contrast: var(--ion-color-custom1-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-custom1-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-custom1-shade) !important;
+  --ion-color-tint: var(--ion-color-custom1-tint) !important;
+}
+
+.ion-color-custom2 {
+  --ion-color-base: var(--ion-color-custom2) !important;
+  --ion-color-base-rgb: var(--ion-color-custom2-rgb) !important;
+  --ion-color-contrast: var(--ion-color-custom2-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-custom2-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-custom2-shade) !important;
+  --ion-color-tint: var(--ion-color-custom2-tint) !important;
+}
+
 :root {
   /* Set the font family of the entire app */
-  --ion-font-family: "Rubik", sans-serif;
+  --ion-font-family: "Rubik", sans-serif; //"Montserrat";
 
   --app-background: #ffffff;
   --app-background-shade: var(--ion-background-color-step-50, #f2f2f2);
@@ -315,3 +347,39 @@
   --app-fair-radius: 8px;
   --app-broad-radius: 12px;
 }
+
+// Fonts
+// @font-face {
+//   font-family: "Montserrat";
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url("../assets/fonts/montserrat/Montserrat-Regular.ttf");
+// }
+
+// @font-face {
+//   font-family: "Montserrat";
+//   font-style: normal;
+//   font-weight: 500;
+//   src: url("../assets/fonts/montserrat/Montserrat-Medium.ttf");
+// }
+
+// @font-face {
+//   font-family: "Montserrat";
+//   font-style: semi-bold;
+//   font-weight: 600;
+//   src: url("../assets/fonts/montserrat/Montserrat-SemiBold.ttf");
+// }
+
+// @font-face {
+//   font-family: "Montserrat";
+//   font-style: bold;
+//   font-weight: 700;
+//   src: url("../assets/fonts/montserrat/Montserrat-Bold.ttf");
+// }
+
+// $font-family-base: "Montserrat";
+// body {
+//   font-family: "Montserrat" !important;
+//   font-weight: 400 !important;
+//   font-size: 11px !important;
+// }

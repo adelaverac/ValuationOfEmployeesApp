@@ -13,5 +13,6 @@ export class EndpointService {
     readonly pathLogout = `${serverURL}/api/valuationofemployee/v1/account/logout`;
 
     // Account
-    readonly pathCreateOrEditUser = `${serverURL}/api/valuationofemployee/v1/account/createOrEditUser`;
+    readonly pathCreateNewUser = `${serverURL}/api/valuationofemployee/v1/account/createNewUser`;
+    readonly pathEditUser = `${serverURL}/api/valuationofemployee/v1/account/editUser`;
 }

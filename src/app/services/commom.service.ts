@@ -10,12 +10,12 @@ export class CommomService {
     isLoading = false;
 
     constructor(
-        private _toastCtrl: ToastController,
-        private _spinnerDialog: SpinnerDialog,
-        private _loadingCtrl: LoadingController) { }
+        private toastCtrl: ToastController,
+        private spinnerDialog: SpinnerDialog,
+        private loadingCtrl: LoadingController) { }
 
     async presentToastSuccess(message: string) {
-        const toast = await this._toastCtrl.create({
+        const toast = await this.toastCtrl.create({
             message,
             position: 'top',
             duration: 3000,
@@ -33,7 +33,7 @@ export class CommomService {
     }
 
     async presentToastWarning(message: string) {
-        const toast = await this._toastCtrl.create({
+        const toast = await this.toastCtrl.create({
             message,
             position: 'top',
             duration: 5000,
@@ -51,7 +51,7 @@ export class CommomService {
     }
 
     async presentToastError(message: string) {
-        const toast = await this._toastCtrl.create({
+        const toast = await this.toastCtrl.create({
             message,
             position: 'top',
             duration: 5000,
@@ -69,7 +69,7 @@ export class CommomService {
     }
 
     async presentToastDark(message: string) {
-        const toast = await this._toastCtrl.create({
+        const toast = await this.toastCtrl.create({
             message,
             position: 'bottom',
             duration: 5000,
@@ -80,19 +80,17 @@ export class CommomService {
         toast.present();
     }
 
-
-
     showSpinnerDialog(message?: string) {
-        this._spinnerDialog.show(message);
+        this.spinnerDialog.show(message);
     }
 
     hideSpinnerDialog() {
-        this._spinnerDialog.hide();
+        this.spinnerDialog.hide();
     }
 
     async showLoading(message?: string) {
         this.isLoading = true;
-        return await this._loadingCtrl.create({
+        return await this.loadingCtrl.create({
             message,
             animated: true,
             backdropDismiss: false,

@@ -1,4 +1,7 @@
-<header [showAvatar]="true"></header>
+<header [showAvatar]="false"
+        [showNotification]="true">
+</header>
+
 <!-- fullscreen -->
 <ion-content>
   <div class="info-legend">
@@ -9,7 +12,7 @@
   <ion-toolbar>
     <ion-segment
       value="company"
-      color="tertiary"
+      color="custom1"
       mode="md"
       (ionChange)="segmentChanged($event)"
     >

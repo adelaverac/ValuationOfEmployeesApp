@@ -27,12 +27,19 @@ export class LocalStorageService {
                 if (data) {
                     const userData = JSON.parse(data) as User;
                     return userData;
+                } else {
+                    const userdata = {} as User;
+                    return userdata;
                 }
             });
     }
 
     clearStorage(): void {
         this.localStorage.clear();
+    }
+
+    removeKey(key: string): Promise<any> {
+        return this.localStorage.remove(key);
     }
 
 }

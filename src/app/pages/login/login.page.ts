@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { AuthenticationRequest } from 'src/app/interfaces/authentication/authenticationRequest';
+import { DataProvider } from 'src/app/providers/data.provider';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommomService } from 'src/app/services/commom.service';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
@@ -29,7 +30,8 @@ export class LoginPage implements OnInit {
     private localStorageService: LocalStorageService,
     private navController: NavController,
     private menuController: MenuController,
-    private statusBarService: StatusbarService
+    private statusBarService: StatusbarService,
+    private dataProvider: DataProvider
   ) { }
 
   ngOnInit() {
@@ -72,6 +74,7 @@ export class LoginPage implements OnInit {
 
         this.localStorageService.setToken(token);
         this.localStorageService.setUserData(user);
+        this.dataProvider.fillProviderData();
         this.menuController.enable(true);
         this.navController.navigateRoot('/main/tabs/tab1', { animated: true });
       }, err => {
