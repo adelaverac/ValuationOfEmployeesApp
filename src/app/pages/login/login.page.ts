@@ -8,13 +8,10 @@ import { CommomService } from 'src/app/services/commom.service';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
 import { StatusbarService } from 'src/app/services/statusbar.service';
 @Component({
-  selector: 'app-login',
+  // tslint:disable-next-line: component-selector
+  selector: 'login',
   templateUrl: './login.page.html',
-  styleUrls: [
-    './styles/login.page.scss',
-    './styles/login.shell.scss',
-    './styles/login.responsive.scss',
-  ],
+  styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
 
@@ -22,7 +19,7 @@ export class LoginPage implements OnInit {
 
   isLoginWithEmail = false;
   showPassword = false;
-  passwordToggleIcon = 'eye-outline';
+  passwordToggleIcon = 'eye';
 
   constructor(
     private commomService: CommomService,
@@ -35,7 +32,7 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.statusBarService.changeBackgroundStatusBar('#FFF', true);
+    this.statusBarService.changeBackgroundStatusBar('#1a2639', false);
     this.initValues();
   }
 
@@ -45,10 +42,10 @@ export class LoginPage implements OnInit {
 
   togglePassword(): void {
     this.showPassword = !this.showPassword;
-    if (this.passwordToggleIcon === 'eye-outline') {
-      this.passwordToggleIcon = 'eye-off-outline';
+    if (this.passwordToggleIcon === 'eye') {
+      this.passwordToggleIcon = 'eye-off';
     } else {
-      this.passwordToggleIcon = 'eye-outline';
+      this.passwordToggleIcon = 'eye';
     }
   }
 
