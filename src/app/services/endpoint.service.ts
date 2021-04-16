@@ -15,4 +15,12 @@ export class EndpointService {
     // Account
     readonly pathCreateNewUser = `${serverURL}/api/valuationofemployee/v1/account/createNewUser`;
     readonly pathEditUser = `${serverURL}/api/valuationofemployee/v1/account/editUser`;
+
+    // Company
+    readonly pathGetCompanies = `${serverURL}/api/valuationofemployee/v1/company/getCompanies`;
+
+    // Employee
+    readonly pathGetEmployeeByIdentification = `${serverURL}/api/valuationofemployee/v1/employee/getEmployeeByIdentification`;
+    readonly pathGetEmployees = `${serverURL}/api/valuationofemployee/v1/employee/getEmployees`;
+    readonly pathGetEmployeesByCompany = `${serverURL}/api/valuationofemployee/v1/employee/getEmployeesByCompany`;
 }
