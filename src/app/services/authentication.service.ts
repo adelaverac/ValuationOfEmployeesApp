@@ -44,4 +44,14 @@ export class AuthenticationService extends AppServiceBase {
         );
     }
 
+    // Test
+    loginTest(authenticationRequest: AuthenticationRequest): Observable<AuthenticationResponse> {
+        return this.http.get<AuthenticationResponse>(
+            '/assets/sample-data/login.json'
+        ).pipe(
+            retry(1),
+            catchError(this.errorHandl)
+        );
+    }
+
 }

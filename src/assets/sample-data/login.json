@@ -1,0 +1,15 @@
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6WyJhZGVsYXZlcmFjQGhvdG1haWwuY29tIiwiQW5keSBTdGV2ZW4gRGUgbGEgVmVyYSBDYXN0cm8iXSwianRpIjoiOTkzYmI1YTEtYTA3Ni00NDUwLWIwYzItYjQyYjQ4MTczZjZmIiwiZXhwIjoxNjIzODE2MDQ1LCJpc3MiOiJWYWx1YXRpb25PZkVtcGxveWVlLmNvbSIsImF1ZCI6IlZhbHVhdGlvbk9mRW1wbG95ZWUuY29tIn0.F9KoLOXv6yP16If25n1SKeM2Y5HSWaR9sjAUEtVspos",
+    "user": {
+      "idUser": 2,
+      "name": "Andy Steven",
+      "lastName": "De la Vera Castro",
+      "cellPhone": "0961063529",
+      "address": "Urb. Colinas del sol MZ 2002 V4",
+      "email": "adelaverac@hotmail.com",
+      "password": null,
+      "idSession": 54
+    },
+    "message": "Sessión iniciada con éxito.",
+    "level": "SUCCESS"
+  }

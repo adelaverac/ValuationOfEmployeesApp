@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
 
     this.commomService.showLoadingCustom();
 
-    this.authenticationService.login(this.authenticationRequest)
+    this.authenticationService.loginTest(this.authenticationRequest)
       .pipe(finalize(() => { this.commomService.hideLoadingCustom(); }))
       .subscribe(result => {
         const { token, user, level, message } = result;
