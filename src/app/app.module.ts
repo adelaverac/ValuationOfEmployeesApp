@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -17,6 +17,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { DataProvider } from './providers/data.provider';
 import { TokenInterceptorService } from './interceptors/tokenInterceptor.service';
 
+import * as Sentry from '@sentry/angular';
+import { Router } from '@angular/router';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -33,6 +36,22 @@ import { TokenInterceptorService } from './interceptors/tokenInterceptor.service
     })
   ],
   providers: [
+    {
+      provide: ErrorHandler,
+      useValue: Sentry.createErrorHandler({
+        showDialog: true,
+      }),
+    },
+    {
+      provide: Sentry.TraceService,
+      deps: [Router],
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => () => { },
+      deps: [Sentry.TraceService],
+      multi: true,
+    },
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
